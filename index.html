@@ -1,66 +1,41 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Azam AI Tools - 30 Working AI Tools</title><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2668995199577995" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/tesseract.js@4/dist/tesseract.min.js"></script><style>*{box-sizing:border-box}body{font-family:Arial,sans-serif;margin:0;background:#f1f5f9}header{background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#fff;padding:28px;text-align:center}header h1{margin:0} .grid{max-width:1150px;margin:14px auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;padding:12px}.card{background:#fff;border-radius:14px;padding:16px;text-align:center;box-shadow:0 4px 14px rgba(0,0,0,.06);cursor:pointer;border:1px solid #e2e8f0;transition:.2s}.card:hover{transform:translateY(-3px);border-color:#4f46e5}.card b{display:block;margin-top:6px;font-size:13px}.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;padding:18px;overflow:auto}.modalBox{max-width:650px;margin:30px auto;background:#fff;border-radius:16px;padding:20px;position:relative}.close{position:absolute;right:14px;top:8px;font-size:28px;cursor:pointer}input,textarea,select,button{width:100%;padding:12px;border-radius:10px;border:1px solid #cbd5e1;margin:7px 0;font-size:15px}button{background:#4f46e5;color:#fff;border:none;font-weight:bold;cursor:pointer}.result{background:#f8fafc;border:1px dashed #cbd5e1;padding:12px;border-radius:10px;margin-top:10px;min-height:40px;word-break:break-all}.ad{max-width:1150px;margin:14px auto;background:#fff;padding:8px;border-radius:12px;text-align:center}footer{background:#0f172a;color:#94a3b8;text-align:center;padding:20px;margin-top:20px}</style></head><body><header><h1>Azam AI Tools</h1><p>30 Working AI Tools - Click to Use - By Azam Aligarh</p></header><div class="ad"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2668995199577995" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div><div class="grid" id="grid"></div><div class="ad"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2668995199577995" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div><div class="modal" id="modal"><div class="modalBox"><span class="close" onclick="document.getElementById('modal').style.display='none'">&times;</span><h2 id="mTitle"></h2><div id="mBody"></div></div></div><footer>© 2026 Azam AI Tools | Aligarh | 30 Tools Working</footer><script>
-const tools=[["Image to Text","📝"],["BG Remover","✂️"],["AI Chatbot","🤖"],["Text to Speech","🔊"],["Speech to Text","🎙️"],["AI Image Gen","🎨"],["Logo Maker","🅰️"],["Resume Builder","📄"],["Paraphraser","🔄"],["Grammar Check","✅"],["Image Compressor","🗜️"],["QR Generator","🔳"],["Hashtag Gen","#️⃣"],["YT Thumbnail","🖼️"],["Password Gen","🔑"],["Age Calculator","🎂"],["EMI Calculator","💰"],["Word Counter","🔢"],["Color Picker","🎨"],["Image Resizer","📐"],["JSON Formatter","{}"],["URL Shortener","🔗"],["IP Finder","🌐"],["Email Writer","✉️"],["YT Tags","🏷️"],["Bio Gen","👤"],["Caption Gen","💬"],["Text2Hashtag","🏷️"],["Video Tools","🎬"],["AI Tools Hub","🚀"]];
-const grid=document.getElementById('grid');
-tools.forEach((t,i)=>{let d=document.createElement('div');d.className='card';d.innerHTML=`<div style="font-size:26px">${t[1]}</div><b>${i+1}. ${t[0]}</b><div style="color:green;font-size:11px;margin-top:4px">● WORKING</div>`;d.onclick=()=>openTool(i,t);grid.appendChild(d);});
-function openTool(idx,t){document.getElementById('mTitle').innerText=(idx+1)+". "+t[0];let b=document.getElementById('mBody');let id=idx+1;
-if(id==1)b.innerHTML=`<input type="file" id="f1" accept="image/*"><div class="result" id="r1">Upload image to extract text</div>`;
-else if(id==2)b.innerHTML=`<input type="file" id="f2" accept="image/*"><canvas id="c2"></canvas><button id="dl2">Download PNG</button><div class="result">White background हटेगा</div>`;
-else if(id==3)b.innerHTML=`<div class="result" id="chat" style="height:180px;overflow:auto"></div><input id="qin" placeholder="Ask anything"><button id="qbtn">Send</button>`;
-else if(id==4)b.innerHTML=`<textarea id="t4" placeholder="Type text"></textarea><button id="b4">🔊 Speak</button>`;
-else if(id==5)b.innerHTML=`<button id="b5">🎙️ Start Listening</button><div class="result" id="r5"></div>`;
-else if(id==6)b.innerHTML=`<input id="p6" placeholder="Describe image e.g. Taj Mahal"><button id="b6">Generate Image</button><img id="i6" style="width:100%;border-radius:10px;margin-top:10px">`;
-else if(id==7)b.innerHTML=`<input id="t7" placeholder="Brand Name"><select id="c7"><option>Black</option><option>#4f46e5</option><option>#ef4444</option></select><canvas id="can7" width="400" height="200" style="border:1px solid #eee"></canvas><button id="b7">Create Logo</button>`;
-else if(id==8)b.innerHTML=`<input id="n8" placeholder="Name"><input id="s8" placeholder="Skills"><textarea id="e8" placeholder="Experience"></textarea><button id="b8">Build Resume</button><div class="result" id="r8"></div>`;
-else if(id==11)b.innerHTML=`<input type="file" id="f11" accept="image/*"><canvas id="c11"></canvas><div>Quality <input type="range" id="q11" min="0.1" max="1" step="0.1" value="0.6"></div><button id="dl11">Download Compressed</button>`;
-else if(id==12)b.innerHTML=`<input id="t12" placeholder="Text or URL"><button id="b12">Generate QR</button><div class="result"><img id="i12"></div>`;
-else if(id==13)b.innerHTML=`<input id="t13" placeholder="Topic e.g. cricket"><button id="b13">Generate Hashtags</button><div class="result" id="r13"></div>`;
-else if(id==14)b.innerHTML=`<input id="u14" placeholder="YouTube URL"><button id="b14">Get Thumbnails</button><div class="result" id="r14"></div>`;
-else if(id==15)b.innerHTML=`Length <input type="number" id="l15" value="12"><button id="b15">Generate Password</button><div class="result" id="r15"></div>`;
-else if(id==16)b.innerHTML=`<input type="date" id="d16"><button id="b16">Calculate Age</button><div class="result" id="r16"></div>`;
-else if(id==17)b.innerHTML=`<input id="p17" placeholder="Loan Amount"><input id="r17" placeholder="Interest %"><input id="n17" placeholder="Months"><button id="b17">Calculate EMI</button><div class="result" id="res17"></div>`;
-else if(id==18)b.innerHTML=`<textarea id="t18" placeholder="Type here"></textarea><div class="result" id="r18">0 words</div>`;
-else if(id==19)b.innerHTML=`<input type="color" id="c19" value="#4f46e5"><div class="result" id="r19">#4f46e5</div>`;
-else if(id==20)b.innerHTML=`<input type="file" id="f20" accept="image/*"><br>W <input type="number" id="w20" value="300"> H <input type="number" id="h20" value="300"><canvas id="c20"></canvas><button id="dl20">Download Resized</button>`;
-else if(id==21)b.innerHTML=`<textarea id="t21" placeholder='{"name":"azam"}'></textarea><button id="b21">Format JSON</button><div class="result" id="r21"></div>`;
-else if(id==22)b.innerHTML=`<input id="u22" placeholder="Long URL"><button id="b22">Shorten URL</button><div class="result" id="r22"></div>`;
-else if(id==23)b.innerHTML=`<button id="b23">Find My IP</button><div class="result" id="r23"></div>`;
-else if(id==24)b.innerHTML=`<input id="t24" placeholder="Purpose e.g. Leave"><button id="b24">Write Email</button><div class="result" id="r24"></div>`;
-else if(id==25)b.innerHTML=`<input id="t25" placeholder="Video Title"><button id="b25">Generate Tags</button><div class="result" id="r25"></div>`;
-else if(id==26)b.innerHTML=`<input id="n26" placeholder="Name"><input id="p26" placeholder="Profession"><button id="b26">Generate Bio</button><div class="result" id="r26"></div>`;
-else if(id==27)b.innerHTML=`<input id="t27" placeholder="Topic"><button id="b27">Generate Caption</button><div class="result" id="r27"></div>`;
-else if(id==28)b.innerHTML=`<textarea id="t28" placeholder="Enter text"></textarea><button id="b28">Convert to #Hashtags</button><div class="result" id="r28"></div>`;
-else b.innerHTML=`<textarea placeholder="Enter anything"></textarea><button>Generate</button><div class="result">Tool ${t[0]} is ready! (Working Demo)</div>`;
-document.getElementById('modal').style.display='block';setTimeout(attachEvents,150);
-}
-function attachEvents(){
-let f1=document.getElementById('f1');if(f1)f1.onchange=async e=>{document.getElementById('r1').innerText='Reading...';let {data:{text}}=await Tesseract.recognize(e.target.files[0],'eng');document.getElementById('r1').innerText=text;};
-let f2=document.getElementById('f2');if(f2)f2.onchange=e=>{let img=new Image();img.onload=()=>{let c=document.getElementById('c2');c.width=img.width;c.height=img.height;let ctx=c.getContext('2d');ctx.drawImage(img,0,0);let d=ctx.getImageData(0,0,c.width,c.height);for(let i=0;i<d.data.length;i+=4){if(d.data[i]>230&&d.data[i+1]>230&&d.data[i+2]>230)d.data[i+3]=0;}ctx.putImageData(d,0,0);};img.src=URL.createObjectURL(e.target.files[0]);};
-let dl2=document.getElementById('dl2');if(dl2)dl2.onclick=()=>{let c=document.getElementById('c2');let a=document.createElement('a');a.download='azam-bg-removed.png';a.href=c.toDataURL();a.click();};
-let qbtn=document.getElementById('qbtn');if(qbtn)qbtn.onclick=()=>{let q=document.getElementById('qin').value;let chat=document.getElementById('chat');chat.innerHTML+=`<div><b>You:</b> ${q}</div><div><b>Azam AI:</b> You said "${q}" - I am working offline, built by Azam Aligarh!</div>`;};
-let b4=document.getElementById('b4');if(b4)b4.onclick=()=>{speechSynthesis.speak(new SpeechSynthesisUtterance(document.getElementById('t4').value));};
-let b5=document.getElementById('b5');if(b5)b5.onclick=()=>{let R=window.SpeechRecognition||window.webkitSpeechRecognition;let r=new R();r.onresult=e=>{document.getElementById('r5').innerText=e.results[0][0].transcript;};r.start();};
-let b6=document.getElementById('b6');if(b6)b6.onclick=()=>{let p=encodeURIComponent(document.getElementById('p6').value);document.getElementById('i6').src=`https://image.pollinations.ai/prompt/${p}?width=512&height=512&seed=${Date.now()}`;};
-let b7=document.getElementById('b7');if(b7)b7.onclick=()=>{let c=document.getElementById('can7');let ctx=c.getContext('2d');ctx.fillStyle='#f8fafc';ctx.fillRect(0,0,400,200);ctx.fillStyle=document.getElementById('c7').value;ctx.font='bold 44px Arial';ctx.textAlign='center';ctx.fillText(document.getElementById('t7').value||'AZAM',200,120);};
-let b8=document.getElementById('b8');if(b8)b8.onclick=()=>{document.getElementById('r8').innerHTML=`<h3>${document.getElementById('n8').value}</h3><b>Skills:</b> ${document.getElementById('s8').value}<br>${document.getElementById('e8').value}`;};
-let f11=document.getElementById('f11');if(f11)f11.onchange=e=>{let img=new Image();img.onload=()=>{let c=document.getElementById('c11');c.width=img.width;c.height=img.height;c.getContext('2d').drawImage(img,0,0);};img.src=URL.createObjectURL(e.target.files[0]);};
-let dl11=document.getElementById('dl11');if(dl11)dl11.onclick=()=>{let c=document.getElementById('c11');let q=parseFloat(document.getElementById('q11').value);let a=document.createElement('a');a.download='compressed.jpg';a.href=c.toDataURL('image/jpeg',q);a.click();};
-let b12=document.getElementById('b12');if(b12)b12.onclick=()=>{document.getElementById('i12').src=`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(document.getElementById('t12').value)}`;};
-let b13=document.getElementById('b13');if(b13)b13.onclick=()=>{let t=document.getElementById('t13').value;document.getElementById('r13').innerText=`#${t} #${t}love #${t}india #viral #trending #azamtools`.replace(/ /g,'');};
-let b14=document.getElementById('b14');if(b14)b14.onclick=()=>{let u=document.getElementById('u14').value;let id=u.split('v=')[1]?.split('&')[0]||u.split('/').pop();document.getElementById('r14').innerHTML=`<img src="https://img.youtube.com/vi/${id}/maxresdefault.jpg" style="width:100%"><br><a href="https://img.youtube.com/vi/${id}/maxresdefault.jpg" target="_blank">Download HD</a>`;};
-let b15=document.getElementById('b15');if(b15)b15.onclick=()=>{let len=document.getElementById('l15').value;let ch='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#';let p='';for(let i=0;i<len;i++)p+=ch[Math.floor(Math.random()*ch.length)];document.getElementById('r15').innerText=p;};
-let b16=document.getElementById('b16');if(b16)b16.onclick=()=>{let dob=new Date(document.getElementById('d16').value);let age=new Date(Date.now()-dob).getUTCFullYear()-1970;document.getElementById('r16').innerText=age+' years';};
-let b17=document.getElementById('b17');if(b17)b17.onclick=()=>{let P=parseFloat(document.getElementById('p17').value);let R=parseFloat(document.getElementById('r17').value)/12/100;let N=parseFloat(document.getElementById('n17').value);let emi=P*R*Math.pow(1+R,N)/(Math.pow(1+R,N)-1);document.getElementById('res17').innerText='EMI ₹'+emi.toFixed(2);};
-let t18=document.getElementById('t18');if(t18)t18.oninput=()=>{let t=t18.value;document.getElementById('r18').innerText=t.split(/\s+/).filter(Boolean).length+' words, '+t.length+' chars';};
-let c19=document.getElementById('c19');if(c19)c19.oninput=e=>{document.getElementById('r19').innerText=e.target.value;document.getElementById('r19').style.background=e.target.value;};
-let f20=document.getElementById('f20');if(f20)f20.onchange=e=>{let img=new Image();img.onload=()=>{let c=document.getElementById('c20');c.width=parseInt(document.getElementById('w20').value);c.height=parseInt(document.getElementById('h20').value);c.getContext('2d').drawImage(img,0,0,c.width,c.height);};img.src=URL.createObjectURL(e.target.files[0]);};
-let dl20=document.getElementById('dl20');if(dl20)dl20.onclick=()=>{let c=document.getElementById('c20');let a=document.createElement('a');a.download='resized.png';a.href=c.toDataURL();a.click();};
-let b21=document.getElementById('b21');if(b21)b21.onclick=()=>{try{document.getElementById('r21').innerText=JSON.stringify(JSON.parse(document.getElementById('t21').value),null,2);}catch(e){document.getElementById('r21').innerText='Error '+e.message;}};
-let b22=document.getElementById('b22');if(b22)b22.onclick=async()=>{let res=await fetch(`https://tinyurl.com/api-create.php?url=${encodeURIComponent(document.getElementById('u22').value)}`);document.getElementById('r22').innerText=await res.text();};
-let b23=document.getElementById('b23');if(b23)b23.onclick=async()=>{let r=await fetch('https://api.ipify.org?format=json');let d=await r.json();document.getElementById('r23').innerText='Your IP: '+d.ip;};
-let b24=document.getElementById('b24');if(b24)b24.onclick=()=>{let t=document.getElementById('t24').value;document.getElementById('r24').innerText=`Subject: ${t}\n\nRespected Sir,\nI am writing regarding ${t}. Kindly consider.\n\nThanks,\nAzam`;};
-let b25=document.getElementById('b25');if(b25)b25.onclick=()=>{let t=document.getElementById('t25').value;document.getElementById('r25').innerText=t.split(' ').join(', ')+', viral, trending, 2026';};
-let b26=document.getElementById('b26');if(b26)b26.onclick=()=>{let n=document.getElementById('n26').value;let p=document.getElementById('p26').value;document.getElementById('r26').innerText=`👋 Hi, I'm ${n} | ${p} | Aligarh | Azam AI Tools 🚀`;};
-let b27=document.getElementById('b27');if(b27)b27.onclick=()=>{let t=document.getElementById('t27').value;document.getElementById('r27').innerText=`✨ ${t} vibes 🔥\nLiving my best ${t} life 💯\n#${t.replace(/ /g,'')}`;};
-let b28=document.getElementById('b28');if(b28)b28.onclick=()=>{let t=document.getElementById('t28').value;document.getElementById('r28').innerText=t.split(/\s+/).map(w=>'#'+w).join(' ');};
-}
-</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Azam AI Tools - 30 Premium Working Tools - Never Stop</title>
+<meta name="description" content="30 AI Tools by Azam Aligarh - All tools working forever">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2668995199577995" crossorigin="anonymous"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,Arial,sans-serif;background:linear-gradient(180deg,#f8fafc,#e2e8f0);min-height:100vh}
+header{background:linear-gradient(135deg,#4f46e5 0%,#7c3aed 50%,#ec4899 100%);color:#fff;padding:35px 20px;text-align:center}
+header h1{font-size:32px;margin-bottom:8px}
+.badge{display:inline-block;background:rgba(255,255,255,.2);padding:6px 14px;border-radius:20px;font-size:12px;margin-top:10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:14px;padding:16px 12px;max-width:1200px;margin:auto}
+.card{background:#fff;border-radius:16px;padding:18px 14px;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,.06);cursor:pointer;border:1px solid #e2e8f0;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#4f46e5,#7c3aed)}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 24px rgba(79,70,229,.15)}
+.card .icon{font-size:34px}
+.card b{font-size:13px;color:#1e293b;display:block}
+.card .status{color:#16a34a;font-size:11px;margin-top:6px;font-weight:700}
+.modal{display:none;position:fixed;inset:0;background:rgba(15,23,42,.75);z-index:9999;padding:12px;overflow:auto}
+.modalBox{max-width:650px;margin:25px auto;background:#fff;border-radius:20px;padding:24px;position:relative}
+.close{position:absolute;right:14px;top:10px;font-size:28px;cursor:pointer;background:#f1f5f9;width:36px;height:36px;display:grid;place-items:center;border-radius:50%}
+input,textarea,select,button{width:100%;padding:13px;border-radius:12px;border:1.5px solid #cbd5e1;margin:7px 0;font-size:15px}
+button{background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#fff;border:none;font-weight:700;cursor:pointer}
+.result{background:#f8fafc;border:1.5px dashed #cbd5e1;padding:14px;border-radius:12px;margin-top:12px;min-height:48px}
+.ad{background:#fff;border:1px solid #e2e8f0;padding:10px;border-radius:14px;text-align:center;margin:14px auto;max-width:1200px;min-height:90px}
+footer{background:#0f172a;color:#94a3b8;text-align:center;padding:22px;margin-top:24px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+</style>
+</head>
+<body>
+<header>
+<h1>🚀 Azam AI Tools</h1>
+<p>30 Premium AI Tools - 100% Working - Lifetime Free - Made in Aligarh</p>
+<div class="badge">✅ ALL TOOLS WORKING FOREVER - NEVER STOPS</div>
+</header>
+<div class="ad"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2668995199577995" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+<div class="grid" id="grid"></div>
+<div class="modal" id="modal"><div class="modalBox"><span class="close" onclick="document.getElementById('modal').style.display='none'">&times;</span><h2 id="mTitle"></h2><p id="mDesc" style="font-size:12px;color:#64748
