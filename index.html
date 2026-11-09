@@ -9,8 +9,10 @@ body{margin:0;background:#0a001a;font-family:Arial;text-align:center;color:gold}
 .top{background:radial-gradient(circle,#2a0a4a,#12002a);border:4px solid gold;border-radius:18px;margin:10px;padding:15px}
 h1{font-size:36px;margin:5px;color:#FFD700}
 .phone{font-size:22px;background:gold;color:black;padding:10px 18px;border-radius:10px;font-weight:bold;display:inline-block}
-button{background:gold;color:black;padding:11px 12px;font-size:15px;font-weight:bold;border:none;border-radius:10px;margin:4px;cursor:pointer}
-button.active{background:white;color:#1a0033;border:2px solid gold}
+.icons{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:12px}
+.icons button{background:#220044;color:gold;border:2px solid gold;border-radius:14px;padding:14px;width:100px;font-size:15px;font-weight:bold;cursor:pointer}
+.icons button.active{background:gold;color:black}
+button.big{background:gold;color:black;padding:13px 18px;font-size:18px;font-weight:bold;border:none;border-radius:10px;margin:6px}
 input{padding:13px;width:92%;border-radius:10px;font-size:16px;margin:8px 0;border:2px solid gold}
 .grid{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;padding:5px}
 .card{background:white;color:black;width:160px;border-radius:14px;padding:8px;text-align:left;border:3px solid gold}
@@ -22,7 +24,6 @@ input{padding:13px;width:92%;border-radius:10px;font-size:16px;margin:8px 0;bord
 </style>
 </head>
 <body>
-
 <div class="top">
 <div style="font-size:45px">👑 💎</div>
 <h1>bazaar.com</h1>
@@ -30,25 +31,24 @@ input{padding:13px;width:92%;border-radius:10px;font-size:16px;margin:8px 0;bord
 <div class="phone">📞 9528825250</div>
 <p>Aligarh - ameer-bazaar.com</p>
 <input id="search" onkeyup="filter()" placeholder="🔍 Dhoondo - iPhone 15, Fortuner, Kothi...">
+<div class="icons">
+<button onclick="show('all',this)" class="active">⭐<br>SAB</button>
+<button onclick="show('gadi',this)">🚗<br>Gadi</button>
+<button onclick="show('kothi',this)">🏰<br>Kothi</button>
+<button onclick="show('sona',this)">💎<br>Sona</button>
+<button onclick="show('rolex',this)">⌚<br>Rolex</button>
+<button onclick="show('iphone',this)">📱<br>iPhone</button>
+<button onclick="show('plot',this)">🏞️<br>Plot</button>
+<button onclick="show('goods',this)">🛒<br>Goods</button>
+</div>
 <br>
-<button onclick="show('all',this)" class="active">SAB</button>
-<button onclick="show('iphone',this)">📱 iPhone</button>
-<button onclick="show('gadi',this)">🚗 Gadi</button>
-<button onclick="show('kothi',this)">🏰 Kothi</button>
-<button onclick="show('sona',this)">💎 Sona</button>
-<button onclick="show('rolex',this)">⌚ Rolex</button>
-<button onclick="show('plot',this)">🏞️ Plot</button>
-<button onclick="show('goods',this)">🛒 Goods</button>
+<a href="tel:9528825250"><button class="big">📞 CALL KARO</button></a>
+<a href="https://wa.me/919528825250"><button class="big">💬 WHATSAPP</button></a>
 </div>
 
 <div class="grid" id="list"></div>
 
-<div class="bottom">
-<h2>AMEER BAZAAR</h2>
-<p>MALIK AZAM | 9528825250 | LUXURY | TRUST | BEST RATE</p>
-<a href="tel:9528825250"><button>📞 CALL KARO</button></a>
-<a href="https://wa.me/919528825250"><button>💬 WHATSAPP</button></a>
-</div>
+<div class="bottom"><h2>AMEER BAZAAR</h2><p>MALIK AZAM | 9528825250 | LUXURY | TRUST | BEST RATE</p></div>
 <div class="footer">⭐ AMEER BAZAAR - MALIK AZAM - 9528825250 ⭐</div>
 
 <script>
@@ -72,7 +72,7 @@ let data=[
 {name:"Plot 200 Gaj - Aligarh",cat:"plot",price:"₹25 Lakh",img:"https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400"},
 {name:"Plot 100 Gaj",cat:"plot",price:"₹12 Lakh",img:"https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400"},
 {name:"Bartan Set",cat:"goods",price:"₹2,999",img:"https://images.unsplash.com/photo-1584990347449-a2d4c2c6e7c0?w=400"},
-{name:"Gas Stove + Cylinder",cat:"goods",price:"₹4,500",img:"https://images.unsplash.com/photo-1585515320310-259814833e62?w=400"},
+{name:"Gas Stove",cat:"goods",price:"₹4,500",img:"https://images.unsplash.com/photo-1585515320310-259814833e62?w=400"},
 ];
 let cur='all';
 function render(){
@@ -80,13 +80,12 @@ let q=document.getElementById('search').value.toLowerCase();
 let html='';
 data.forEach(d=>{
 if((cur=='all'||d.cat==cur) && d.name.toLowerCase().includes(q)){
-html+=`<div class="card"><img src="${d.img}"><b>${d.name}</b><br><small>${d.price}</small><br><a href="https://wa.me/919528825250?text=Mujhe ${d.name} chahiye"><button style="width:100%">BUY KARO</button></a></div>`;
-}
-});
+html+=`<div class="card"><img src="${d.img}"><b>${d.name}</b><br><small>${d.price}</small><br><a href="https://wa.me/919528825250?text=Mujhe ${d.name} chahiye"><button style="width:100%;background:gold;padding:8px;border:none;border-radius:8px;font-weight:bold">BUY KARO</button></a></div>`;
+}});
 if(!html) html='<p style="color:white">Kuch nahi mila, WhatsApp karo!</p>';
 document.getElementById('list').innerHTML=html;
 }
-function show(c,btn){cur=c; document.querySelectorAll('.top button').forEach(b=>b.classList.remove('active')); if(btn) btn.classList.add('active'); render();}
+function show(c,btn){cur=c; document.querySelectorAll('.icons button').forEach(b=>b.classList.remove('active')); if(btn) btn.classList.add('active'); render(); window.scrollTo(0,400);}
 function filter(){render();}
 render();
 </script>
