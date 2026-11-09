@@ -4,90 +4,79 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>bazaar.com - AMEER BAZAAR - MALIK AZAM</title>
 <style>
-*{box-sizing:border-box}
-body{margin:0;background:#0a001a;font-family:Arial;text-align:center;color:gold}
+*{box-sizing:border-box}body{margin:0;background:#0a001a;font-family:Arial;text-align:center;color:gold}
 .top{background:radial-gradient(circle,#2a0a4a,#12002a);border:4px solid gold;border-radius:18px;margin:10px;padding:15px}
-h1{font-size:36px;margin:5px;color:#FFD700}
-.phone{font-size:22px;background:gold;color:black;padding:10px 18px;border-radius:10px;font-weight:bold;display:inline-block}
-.icons{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:12px}
-.icons button{background:#220044;color:gold;border:2px solid gold;border-radius:14px;padding:14px;width:100px;font-size:15px;font-weight:bold;cursor:pointer}
+h1{font-size:36px;margin:5px;color:#FFD700}.phone{font-size:22px;background:gold;color:black;padding:10px 18px;border-radius:10px;font-weight:bold;display:inline-block}
+.icons{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:12px}
+.icons button{background:#220044;color:gold;border:2px solid gold;border-radius:14px;padding:12px;width:100px;font-size:15px;font-weight:bold}
 .icons button.active{background:gold;color:black}
 button.big{background:gold;color:black;padding:13px 18px;font-size:18px;font-weight:bold;border:none;border-radius:10px;margin:6px}
 input{padding:13px;width:92%;border-radius:10px;font-size:16px;margin:8px 0;border:2px solid gold}
 .grid{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;padding:5px}
 .card{background:white;color:black;width:160px;border-radius:14px;padding:8px;text-align:left;border:3px solid gold}
-.card img{width:100%;height:110px;object-fit:cover;border-radius:10px}
-.card b{font-size:15px}
-.card small{color:green;font-weight:bold}
+.card img{width:100%;height:110px;object-fit:cover;border-radius:10px}.card b{font-size:14px}.card small{color:green;font-weight:bold}
 .bottom{background:#12002a;border:4px solid gold;border-radius:18px;margin:10px;padding:12px}
 .footer{background:gold;color:black;padding:12px;font-weight:bold;margin:10px;border-radius:12px}
+.count{background:white;color:black;padding:8px;border-radius:8px;font-weight:bold;margin:5px;display:inline-block}
 </style>
 </head>
 <body>
 <div class="top">
-<div style="font-size:45px">👑 💎</div>
-<h1>bazaar.com</h1>
-<h2>AMEER BAZAAR - MALIK AZAM</h2>
-<div class="phone">📞 9528825250</div>
-<p>Aligarh - ameer-bazaar.com</p>
+<div style="font-size:45px">👑 💎</div><h1>bazaar.com</h1><h2>AMEER BAZAAR - MALIK AZAM</h2>
+<div class="phone">📞 9528825250</div><p>Aligarh - ameer-bazaar.com</p>
 <input id="search" onkeyup="filter()" placeholder="🔍 Dhoondo - iPhone 15, Fortuner, Kothi...">
 <div class="icons">
-<button onclick="show('all',this)" class="active">⭐<br>SAB</button>
-<button onclick="show('gadi',this)">🚗<br>Gadi</button>
-<button onclick="show('kothi',this)">🏰<br>Kothi</button>
-<button onclick="show('sona',this)">💎<br>Sona</button>
-<button onclick="show('rolex',this)">⌚<br>Rolex</button>
-<button onclick="show('iphone',this)">📱<br>iPhone</button>
-<button onclick="show('plot',this)">🏞️<br>Plot</button>
-<button onclick="show('goods',this)">🛒<br>Goods</button>
-</div>
-<br>
+<button onclick="show('all',this)" class="active">⭐<br>SAB (175)</button>
+<button onclick="show('iphone',this)">📱<br>iPhone (25)</button>
+<button onclick="show('gadi',this)">🚗<br>Gadi (25)</button>
+<button onclick="show('kothi',this)">🏰<br>Kothi (25)</button>
+<button onclick="show('sona',this)">💎<br>Sona (25)</button>
+<button onclick="show('rolex',this)">⌚<br>Rolex (25)</button>
+<button onclick="show('plot',this)">🏞️<br>Plot (25)</button>
+<button onclick="show('goods',this)">🛒<br>Goods (25)</button>
+</div><br>
 <a href="tel:9528825250"><button class="big">📞 CALL KARO</button></a>
 <a href="https://wa.me/919528825250"><button class="big">💬 WHATSAPP</button></a>
 </div>
-
+<div id="cnt" class="count"></div>
 <div class="grid" id="list"></div>
-
 <div class="bottom"><h2>AMEER BAZAAR</h2><p>MALIK AZAM | 9528825250 | LUXURY | TRUST | BEST RATE</p></div>
 <div class="footer">⭐ AMEER BAZAAR - MALIK AZAM - 9528825250 ⭐</div>
-
 <script>
+let IP="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400";
+let GA="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=400";
+let KO="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400";
+let SO="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400";
+let RO="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=400";
+let PL="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400";
+let GO="https://images.unsplash.com/photo-1584990347449-a2d4c2c6e7c0?w=400";
 let data=[
-{name:"iPhone 15 Pro Max",cat:"iphone",price:"₹1,20,000",img:"https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=400"},
-{name:"iPhone 14 Pro",cat:"iphone",price:"₹85,000",img:"https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400"},
-{name:"iPhone 13",cat:"iphone",price:"₹42,000",img:"https://images.unsplash.com/photo-1632661677709-2d3d8e0b3b3a?w=400"},
-{name:"iPhone 16",cat:"iphone",price:"₹79,999",img:"https://images.unsplash.com/photo-1592286927505-1def25115558?w=400"},
-{name:"Fortuner",cat:"gadi",price:"₹32,00,000",img:"https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=400"},
-{name:"Thar",cat:"gadi",price:"₹15,00,000",img:"https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=400"},
-{name:"BMW",cat:"gadi",price:"₹45,00,000",img:"https://images.unsplash.com/photo-1555215695-3004980ad54e?w=400"},
-{name:"Audi",cat:"gadi",price:"₹52,00,000",img:"https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?w=400"},
-{name:"5 BHK Kothi - Aligarh",cat:"kothi",price:"₹1.2 Cr",img:"https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400"},
-{name:"3 BHK Kothi - Civil Lines",cat:"kothi",price:"₹85 Lakh",img:"https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400"},
-{name:"Villa - Delhi Road",cat:"kothi",price:"₹2.5 Cr",img:"https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400"},
-{name:"Gold Haar Set",cat:"sona",price:"₹2,50,000",img:"https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400"},
-{name:"Gold Kangan",cat:"sona",price:"₹1,20,000",img:"https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=400"},
-{name:"Diamond Ring",cat:"sona",price:"₹75,000",img:"https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400"},
-{name:"Rolex Gold",cat:"rolex",price:"₹8,50,000",img:"https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=400"},
-{name:"Rolex Datejust",cat:"rolex",price:"₹6,20,000",img:"https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=400"},
-{name:"Plot 200 Gaj - Aligarh",cat:"plot",price:"₹25 Lakh",img:"https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400"},
-{name:"Plot 100 Gaj",cat:"plot",price:"₹12 Lakh",img:"https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400"},
-{name:"Bartan Set",cat:"goods",price:"₹2,999",img:"https://images.unsplash.com/photo-1584990347449-a2d4c2c6e7c0?w=400"},
-{name:"Gas Stove",cat:"goods",price:"₹4,500",img:"https://images.unsplash.com/photo-1585515320310-259814833e62?w=400"},
+// iPHONE 25
+{name:"iPhone 15 Pro Max 256GB",cat:"iphone",price:"₹1,20,000",img:IP},{name:"iPhone 15 Pro 128GB",cat:"iphone",price:"₹1,05,000",img:IP},{name:"iPhone 15 Plus",cat:"iphone",price:"₹85,000",img:IP},{name:"iPhone 15",cat:"iphone",price:"₹72,000",img:IP},{name:"iPhone 14 Pro Max",cat:"iphone",price:"₹98,000",img:IP},{name:"iPhone 14 Pro",cat:"iphone",price:"₹85,000",img:IP},{name:"iPhone 14 Plus",cat:"iphone",price:"₹62,000",img:IP},{name:"iPhone 14",cat:"iphone",price:"₹52,000",img:IP},{name:"iPhone 13 Pro Max",cat:"iphone",price:"₹75,000",img:IP},{name:"iPhone 13 Pro",cat:"iphone",price:"₹62,000",img:IP},{name:"iPhone 13",cat:"iphone",price:"₹42,000",img:IP},{name:"iPhone 13 Mini",cat:"iphone",price:"₹35,000",img:IP},{name:"iPhone 12 Pro Max",cat:"iphone",price:"₹55,000",img:IP},{name:"iPhone 12 Pro",cat:"iphone",price:"₹45,000",img:IP},{name:"iPhone 12",cat:"iphone",price:"₹32,000",img:IP},{name:"iPhone 12 Mini",cat:"iphone",price:"₹25,000",img:IP},{name:"iPhone 11 Pro Max",cat:"iphone",price:"₹38,000",img:IP},{name:"iPhone 11 Pro",cat:"iphone",price:"₹30,000",img:IP},{name:"iPhone 11",cat:"iphone",price:"₹22,000",img:IP},{name:"iPhone 16",cat:"iphone",price:"₹79,999",img:IP},{name:"iPhone 16 Pro",cat:"iphone",price:"₹1,15,000",img:IP},{name:"iPhone 16 Pro Max",cat:"iphone",price:"₹1,35,000",img:IP},{name:"iPhone SE 2022",cat:"iphone",price:"₹28,000",img:IP},{name:"iPhone XR",cat:"iphone",price:"₹18,000",img:IP},{name:"iPhone XS Max",cat:"iphone",price:"₹24,000",img:IP},
+// GADI 25
+{name:"Fortuner 4x4",cat:"gadi",price:"₹32,00,000",img:GA},{name:"Fortuner Legender",cat:"gadi",price:"₹38,00,000",img:GA},{name:"Thar 4x4",cat:"gadi",price:"₹15,00,000",img:GA},{name:"Thar Roxx",cat:"gadi",price:"₹17,50,000",img:GA},{name:"Scorpio N",cat:"gadi",price:"₹16,50,000",img:GA},{name:"Scorpio Classic",cat:"gadi",price:"₹13,00,000",img:GA},{name:"Innova Crysta",cat:"gadi",price:"₹22,00,000",img:GA},{name:"Innova Hycross",cat:"gadi",price:"₹26,00,000",img:GA},{name:"BMW X5",cat:"gadi",price:"₹85,00,000",img:GA},{name:"BMW 3 Series",cat:"gadi",price:"₹45,00,000",img:GA},{name:"BMW 5 Series",cat:"gadi",price:"₹65,00,000",img:GA},{name:"Audi A4",cat:"gadi",price:"₹42,00,000",img:GA},{name:"Audi Q5",cat:"gadi",price:"₹62,00,000",img:GA},{name:"Audi Q7",cat:"gadi",price:"₹85,00,000",img:GA},{name:"Mercedes C-Class",cat:"gadi",price:"₹58,00,000",img:GA},{name:"Mercedes E-Class",cat:"gadi",price:"₹72,00,000",img:GA},{name:"Mercedes GLE",cat:"gadi",price:"₹92,00,000",img:GA},{name:"Swift Dzire",cat:"gadi",price:"₹7,50,000",img:GA},{name:"Swift",cat:"gadi",price:"₹6,50,000",img:GA},{name:"Baleno",cat:"gadi",price:"₹7,20,000",img:GA},{name:"Creta",cat:"gadi",price:"₹12,50,000",img:GA},{name:"Seltos",cat:"gadi",price:"₹13,50,000",img:GA},{name:"Harrier",cat:"gadi",price:"₹18,00,000",img:GA},{name:"Safari",cat:"gadi",price:"₹19,00,000",img:GA},{name:"Bolero",cat:"gadi",price:"₹9,50,000",img:GA},
+// KOTHI 25
+{name:"5 BHK Kothi - Aligarh",cat:"kothi",price:"₹1.2 Cr",img:KO},{name:"3 BHK Kothi - Civil Lines",cat:"kothi",price:"₹85 Lakh",img:KO},{name:"4 BHK Kothi - Delhi Road",cat:"kothi",price:"₹1.5 Cr",img:KO},{name:"6 BHK Villa - Quarsi",cat:"kothi",price:"₹2.5 Cr",img:KO},{name:"2 BHK Makan - Ramghat",cat:"kothi",price:"₹45 Lakh",img:KO},{name:"3 BHK Makan - Sasni Gate",cat:"kothi",price:"₹55 Lakh",img:KO},{name:"4 BHK Duplex - Marris Road",cat:"kothi",price:"₹95 Lakh",img:KO},{name:"5 BHK Corner Kothi",cat:"kothi",price:"₹1.8 Cr",img:KO},{name:"7 BHK Royal Kothi",cat:"kothi",price:"₹3.2 Cr",img:KO},{name:"3 BHK Flat - Agra Road",cat:"kothi",price:"₹38 Lakh",img:KO},{name:"2 BHK Flat - Anupshahar",cat:"kothi",price:"₹28 Lakh",img:KO},{name:"4 BHK Flat - Centre Point",cat:"kothi",price:"₹65 Lakh",img:KO},{name:"Farmhouse - G.T Road",cat:"kothi",price:"₹4.5 Cr",img:KO},{name:"Farmhouse - Khair Road",cat:"kothi",price:"₹2.8 Cr",img:KO},{name:"Dukan + Makan - Bara Bazar",cat:"kothi",price:"₹1.1 Cr",img:KO},{name:"Showroom - G.T Road",cat:"kothi",price:"₹2.2 Cr",img:KO},{name:"Godown - Industrial Area",cat:"kothi",price:"₹90 Lakh",img:KO},{name:"Hostel Building",cat:"kothi",price:"₹1.6 Cr",img:KO},{name:"School Building",cat:"kothi",price:"₹3.5 Cr",img:KO},{name:"Hotel - Near Station",cat:"kothi",price:"₹5 Cr",img:KO},{name:"2 BHK Kothi - Naurangabad",cat:"kothi",price:"₹42 Lakh",img:KO},{name:"3 BHK Kothi - Jeevangarh",cat:"kothi",price:"₹58 Lakh",img:KO},{name:"4 BHK Kothi - Medical Road",cat:"kothi",price:"₹1.3 Cr",img:KO},{name:"5 BHK Kothi - Dodhpur",cat:"kothi",price:"₹1.7 Cr",img:KO},{name:"Luxury Villa - Aligarh",cat:"kothi",price:"₹2.1 Cr",img:KO},
+// SONA 25
+{name:"Gold Haar Set 100g",cat:"sona",price:"₹7,50,000",img:SO},{name:"Gold Haar Set 50g",cat:"sona",price:"₹3,80,000",img:SO},{name:"Gold Kangan 2 Pcs",cat:"sona",price:"₹1,20,000",img:SO},{name:"Gold Chudi Set",cat:"sona",price:"₹95,000",img:SO},{name:"Gold Ring 8g",cat:"sona",price:"₹62,000",img:SO},{name:"Gold Ring 10g",cat:"sona",price:"₹78,000",img:SO},{name:"Diamond Ring",cat:"sona",price:"₹75,000",img:SO},{name:"Diamond Earrings",cat:"sona",price:"₹1,10,000",img:SO},{name:"Diamond Necklace",cat:"sona",price:"₹2,80,000",img:SO},{name:"Gold Chain 20g",cat:"sona",price:"₹1,55,000",img:SO},{name:"Gold Chain 30g",cat:"sona",price:"₹2,30,000",img:SO},{name:"Gold Chain 50g",cat:"sona",price:"₹3,85,000",img:SO},{name:"Gold Bracelet",cat:"sona",price:"₹1,05,000",img:SO},{name:"Gold Jhumka",cat:"sona",price:"₹68,000",img:SO},{name:"Gold Mangalsutra",cat:"sona",price:"₹85,000",img:SO},{name:"Gold Nath",cat:"sona",price:"₹32,000",img:SO},{name:"Gold Tika",cat:"sona",price:"₹28,000",img:SO},{name:"Gold Kada 50g",cat:"sona",price:"₹3,90,000",img:SO},{name:"Gold Biscuit 10g",cat:"sona",price:"₹78,000",img:SO},{name:"Gold Biscuit 20g",cat:"sona",price:"₹1,56,000",img:SO},{name:"Gold Coin 8g",cat:"sona",price:"₹62,000",img:SO},{name:"Silver Payal",cat:"sona",price:"₹12,000",img:SO},{name:"Silver Thali Set",cat:"sona",price:"₹25,000",img:SO},{name:"Silver Murti",cat:"sona",price:"₹18,000",img:SO},{name:"Platinum Ring",cat:"sona",price:"₹45,000",img:SO},
+// ROLEX 25
+{name:"Rolex Gold",cat:"rolex",price:"₹8,50,000",img:RO},{name:"Rolex Datejust",cat:"rolex",price:"₹6,20,000",img:RO},{name:"Rolex Submariner",cat:"rolex",price:"₹12,50,000",img:RO},{name:"Rolex Daytona",cat:"rolex",price:"₹28,00,000",img:RO},{name:"Rolex GMT Master",cat:"rolex",price:"₹15,00,000",img:RO},{name:"Rolex Day-Date",cat:"rolex",price:"₹22,00,000",img:RO},{name:"Rolex Oyster Perpetual",cat:"rolex",price:"₹5,80,000",img:RO},{name:"Rolex Explorer",cat:"rolex",price:"₹7,20,000",img:RO},{name:"Rolex Yacht Master",cat:"rolex",price:"₹14,00,000",img:RO},{name:"Rolex Sea-Dweller",cat:"rolex",price:"₹11,50,000",img:RO},{name:"Casio Gold",cat:"rolex",price:"₹12,000",img:RO},{name:"Fossil Chronograph",cat:"rolex",price:"₹15,000",img:RO},{name:"Titan Edge",cat:"rolex",price:"₹22,000",img:RO},{name:"Titan Gold",cat:"rolex",price:"₹28,000",img:RO},{name:"Fastrack Smart",cat:"rolex",price:"₹4,500",img:RO},{name:"Apple Watch Ultra",cat:"rolex",price:"₹85,000",img:RO},{name:"Apple Watch Series 9",cat:"rolex",price:"₹42,000",img:RO},{name:"Samsung Galaxy Watch",cat:"rolex",price:"₹28,000",img:RO},{name:"Hublot Big Bang",cat:"rolex",price:"₹18,00,000",img:RO},{name:"Omega Speedmaster",cat:"rolex",price:"₹5,50,000",img:RO},{name:"Omega Seamaster",cat:"rolex",price:"₹4,80,000",img:RO},{name:"Tag Heuer Carrera",cat:"rolex",price:"₹3,20,000",img:RO},{name:"Tissot PRX",cat:"rolex",price:"₹55,000",img:RO},{name:"Seiko Prospex",cat:"rolex",price:"₹38,000",img:RO},{name:"Rado Captain Cook",cat:"rolex",price:"₹1,85,000",img:RO},
+// PLOT 25
+{name:"Plot 100 Gaj - Aligarh",cat:"plot",price:"₹12 Lakh",img:PL},{name:"Plot 200 Gaj - Aligarh",cat:"plot",price:"₹25 Lakh",img:PL},{name:"Plot 150 Gaj - Quarsi",cat:"plot",price:"₹18 Lakh",img:PL},{name:"Plot 300 Gaj - Delhi Road",cat:"plot",price:"₹42 Lakh",img:PL},{name:"Plot 500 Gaj - G.T Road",cat:"plot",price:"₹75 Lakh",img:PL},{name:"Plot 1000 Gaj - Farm",cat:"plot",price:"₹1.2 Cr",img:PL},{name:"Plot 80 Gaj - Ramghat",cat:"plot",price:"₹9 Lakh",img:PL},{name:"Plot 120 Gaj - Medical",cat:"plot",price:"₹15 Lakh",img:PL},{name:"Plot 250 Gaj - Agra Road",cat:"plot",price:"₹30 Lakh",img:PL},{name:"Plot 400 Gaj - Anupshahar",cat:"plot",price:"₹48 Lakh",img:PL},{name:"Plot 200 Gaj - Sasni Gate",cat:"plot",price:"₹22 Lakh",img:PL},{name:"Plot 100 Gaj - Jeevangarh",cat:"plot",price:"₹11 Lakh",img:PL},{name:"Plot 180 Gaj - Dodhpur",cat:"plot",price:"₹20 Lakh",img:PL},{name:"Plot 220 Gaj - Naurangabad",cat:"plot",price:"₹24 Lakh",img:PL},{name:"Plot 350 Gaj - Khair Road",cat:"plot",price:"₹38 Lakh",img:PL},{name:"Plot 600 Gaj - Industrial",cat:"plot",price:"₹90 Lakh",img:PL},{name:"Plot 1000 Gaj - Industrial",cat:"plot",price:"₹1.5 Cr",img:PL},{name:"Plot 50 Gaj - Bara Bazar",cat:"plot",price:"₹8 Lakh",img:PL},{name:"Plot 75 Gaj - Centre Point",cat:"plot",price:"₹10 Lakh",img:PL},{name:"Plot 125 Gaj - Marris Road",cat:"plot",price:"₹16 Lakh",img:PL},{name:"Plot 175 Gaj - Civil Lines",cat:"plot",price:"₹26 Lakh",img:PL},{name:"Plot 275 Gaj - Delhi Gate",cat:"plot",price:"₹32 Lakh",img:PL},{name:"Plot 450 Gaj - Exhibition",cat:"plot",price:"₹55 Lakh",img:PL},{name:"Plot 800 Gaj - Bypass",cat:"plot",price:"₹95 Lakh",img:PL},{name:"Plot 2000 Gaj - Highway",cat:"plot",price:"₹2.5 Cr",img:PL},
+// GOODS 25
+{name:"Bartan Set Steel",cat:"goods",price:"₹2,999",img:GO},{name:"Gas Stove + Cylinder",cat:"goods",price:"₹4,500",img:GO},{name:"Double Bed + Gadda",cat:"goods",price:"₹18,000",img:GO},{name:"Sofa Set 5 Seater",cat:"goods",price:"₹25,000",img:GO},{name:"Dining Table 6 Seater",cat:"goods",price:"₹22,000",img:GO},{name:"Fridge Double Door",cat:"goods",price:"₹28,000",img:GO},{name:"Fridge Single Door",cat:"goods",price:"₹16,000",img:GO},{name:"Washing Machine",cat:"goods",price:"₹19,000",img:GO},{name:"AC 1.5 Ton",cat:"goods",price:"₹32,000",img:GO},{name:"Cooler Big",cat:"goods",price:"₹8,500",img:GO},{name:"LED TV 43 Inch",cat:"goods",price:"₹22,000",img:GO},{name:"LED TV 55 Inch",cat:"goods",price:"₹38,000",img:GO},{name:"Microwave Oven",cat:"goods",price:"₹8,000",img:GO},{name:"Mixer Grinder",cat:"goods",price:"₹3,500",img:GO},{name:"Inverter + Battery",cat:"goods",price:"₹18,500",img:GO},{name:"Almirah Steel",cat:"goods",price:"₹14,000",img:GO},{name:"Almirah Wooden",cat:"goods",price:"₹19,000",img:GO},{name:"Study Table",cat:"goods",price:"₹5,500",img:GO},{name:"Computer Table",cat:"goods",price:"₹6,500",img:GO},{name:"Laptop HP i5",cat:"goods",price:"₹32,000",img:GO},{name:"Laptop Dell i7",cat:"goods",price:"₹45,000",img:GO},{name:"Printer HP",cat:"goods",price:"₹9,500",img:GO},{name:"CCTV Camera Set",cat:"goods",price:"₹12,000",img:GO},{name:"Water Purifier RO",cat:"goods",price:"₹9,999",img:GO},{name:"Silai Machine",cat:"goods",price:"₹7,500",img:GO},
 ];
 let cur='all';
 function render(){
 let q=document.getElementById('search').value.toLowerCase();
-let html='';
-data.forEach(d=>{
-if((cur=='all'||d.cat==cur) && d.name.toLowerCase().includes(q)){
-html+=`<div class="card"><img src="${d.img}"><b>${d.name}</b><br><small>${d.price}</small><br><a href="https://wa.me/919528825250?text=Mujhe ${d.name} chahiye"><button style="width:100%;background:gold;padding:8px;border:none;border-radius:8px;font-weight:bold">BUY KARO</button></a></div>`;
-}});
+let filtered=data.filter(d=>(cur=='all'||d.cat==cur)&&d.name.toLowerCase().includes(q));
+document.getElementById('cnt').innerText="Dikh raha hai : "+filtered.length+" Cheezein";
+let html=''; filtered.forEach(d=>{html+=`<div class="card"><img src="${d.img}"><b>${d.name}</b><br><small>${d.price}</small><br><a href="https://wa.me/919528825250?text=Mujhe ${encodeURIComponent(d.name)} chahiye - ${d.price}"><button style="width:100%;background:gold;padding:8px;border:none;border-radius:8px;font-weight:bold">BUY KARO</button></a></div>`;});
 if(!html) html='<p style="color:white">Kuch nahi mila, WhatsApp karo!</p>';
 document.getElementById('list').innerHTML=html;
 }
-function show(c,btn){cur=c; document.querySelectorAll('.icons button').forEach(b=>b.classList.remove('active')); if(btn) btn.classList.add('active'); render(); window.scrollTo(0,400);}
-function filter(){render();}
-render();
+function show(c,btn){cur=c;document.querySelectorAll('.icons button').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');render();window.scrollTo(0,420);}
+function filter(){render();} render();
 </script>
 </body>
 </html>
