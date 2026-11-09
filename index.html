@@ -1,71 +1,38 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🏠 HOUSE BAZAAR - Sab Kuch Sasta</title>
+<title>bazaar.com - AMEER BAZAAR - MALIK AZAM</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
-body{
-background:#071a4a;
-background-image:
-radial-gradient(circle at 0% 0%, rgba(255,215,0,.25) 0, transparent 30%),
-radial-gradient(circle at 100% 0%, rgba(255,215,0,.25) 0, transparent 30%),
-radial-gradient(circle at 0% 100%, rgba(255,215,0,.18) 0, transparent 30%),
-radial-gradient(circle at 100% 100%, rgba(255,215,0,.18) 0, transparent 30%);
-color:#fff;padding-bottom:85px}
-.top{background:linear-gradient(180deg,#0a2a6b,#071a4a);text-align:center;padding:28px 12px;border:3px solid #ffd700;border-radius:0 0 25px 25px;box-shadow:0 0 25px rgba(255,215,0,.4)}
-.top .crown{font-size:55px;filter:drop-shadow(0 0 10px #ffd700)}
-.top h1{font-size:36px;color:#ffd700;letter-spacing:2px;text-shadow:0 2px 10px #000}
-.top h2{font-size:15px;color:#fff;margin:6px 0}
-.top p{font-size:18px;font-weight:bold;color:#ffd700}
-.top .tag{background:linear-gradient(90deg,#ffd700,#ff9a00);color:#000;display:inline-block;padding:7px 16px;border-radius:20px;font-weight:bold;font-size:13px;margin-top:10px;border:2px solid #fff}
-.call{display:flex;gap:10px;padding:12px}
-.call a{flex:1;text-align:center;padding:14px;border-radius:14px;text-decoration:none;font-weight:bold;box-shadow:0 4px 10px rgba(0,0,0,.4)}
-.call .green{background:#25D366;color:#fff}
-.call .gold{background:linear-gradient(90deg,#ffd700,#ff9a00);color:#000}
-.banner{margin:0 12px;background:linear-gradient(135deg,#ffd700,#ff9a00);color:#000;padding:18px;border-radius:18px;text-align:center;border:3px solid #fff;box-shadow:0 0 20px rgba(255,215,0,.6)}
-.banner h2{font-size:21px}
-.cats{display:flex;gap:8px;overflow-x:auto;padding:12px}
-.cats button{background:#12295e;color:#fff;border:1.5px solid #ffd700;padding:10px 16px;border-radius:20px;white-space:nowrap}
-.cats button.active{background:#ffd700;color:#000;font-weight:bold}
-.sec{padding:10px 12px;font-size:19px;color:#ffd700;font-weight:bold;text-shadow:0 0 8px #ffd700}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px}
-.card{background:#fff;color:#000;border-radius:18px;overflow:hidden;padding-bottom:10px;border:3px solid #ffd700;box-shadow:0 0 15px rgba(255,215,0,.4)}
-.card img{width:100%;height:145px;object-fit:cover}
-.card h3{font-size:13px;padding:8px 8px 2px}
-.price{color:#ff6b00;font-weight:bold;padding:0 8px}
-.old{color:#999;text-decoration:line-through;font-size:12px}
-.card button{background:#0a2a6b;color:#ffd700;border:2px solid #ffd700;width:90%;margin:8px 5%;padding:12px;border-radius:12px;font-weight:bold}
-.owner{margin:12px;background:linear-gradient(135deg,#0a2a6b,#071a4a);border:3px solid #ffd700;border-radius:20px;padding:20px;text-align:center;box-shadow:0 0 20px rgba(255,215,0,.5)}
-.owner h3{color:#ffd700;font-size:22px}
-.footer{background:#000;text-align:center;padding:20px;color:#ffd700;border-top:3px solid #ffd700}
-.bottom{position:fixed;bottom:0;left:0;right:0;background:#071a4a;display:flex;padding:10px;border-top:2px solid #ffd700}
-.bottom a{flex:1;text-align:center;color:#fff;text-decoration:none;font-size:12px}
+body{margin:0;background:#1a0033;font-family:Arial;text-align:center;color:gold}
+.card{background: radial-gradient(circle, #2a0a4a, #12002a);border:5px solid gold;border-radius:20px;margin:15px;padding:20px;box-shadow:0 0 30px gold}
+h1{font-size:42px;margin:5px;color:#FFD700}
+h2{font-size:28px;margin:5px}
+.phone{font-size:28px;background:gold;color:black;padding:10px;border-radius:10px;font-weight:bold;display:inline-block}
+.icons{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:15px}
+.icons div{background:#220044;border:2px solid gold;border-radius:15px;padding:12px;width:90px}
+button{background:gold;color:black;padding:14px 20px;font-size:20px;font-weight:bold;border:none;border-radius:12px;margin:8px}
+input{padding:12px;width:85%;border-radius:10px;font-size:16px;margin:5px}
 </style>
 </head>
 <body>
-<div class="top"><div class="crown">🏠👑</div><h1>HOUSE BAZAAR</h1><h2>ALIGARH • SAB KUCH MILEGA</h2><p>📞 9528825250</p><div class="tag">✨ GHAR KA HAR SAMAN - SASTA AUR ROYAL ✨</div></div>
-<div class="call"><a class="green" href="https://wa.me/919528825250?text=Salam, Mujhe Order Karna Hai - House Bazaar">💬 WhatsApp Karo</a><a class="gold" href="tel:9528825250">📞 Call Karo</a></div>
-<div class="banner"><h2>🔥 ROYAL SALE - 50% OFF</h2><p>Ghar • Kothi • Plot • Furniture • Electronics</p></div>
-<div class="cats"><button class="active" onclick="show('all',this)">Sab Kuch</button><button onclick="show('kothi',this)">🏠 Kothi / Plot</button><button onclick="show('ghar',this)">🛋️ Ghar Ka Saman</button><button onclick="show('mobile',this)">📱 Mobile</button><button onclick="show('watch',this)">⌚ Watch</button><button onclick="show('fashion',this)">👕 Kapde</button><button onclick="show('sona',this)">💎 Sona</button></div>
-<div class="sec">🏠 House Bazaar Collection</div>
-<div class="grid">
-<div class="card" data-cat="kothi"><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400"><h3>Kothi - Aligarh Plot</h3><div class="price">₹25,00,000 <span class="old">₹35,00,000</span></div><button onclick="order('Kothi / Plot Aligarh')">DETAILS CHAHIYE</button></div>
-<div class="card" data-cat="ghar"><img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400"><h3>Home Decor Lamp</h3><div class="price">₹399 <span class="old">₹899</span></div><button onclick="order('Home Decor Lamp ₹399')">ORDER NOW</button></div>
-<div class="card" data-cat="ghar"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400"><h3>Sofa Set - Royal</h3><div class="price">₹14,999 <span class="old">₹29,999</span></div><button onclick="order('Sofa Set ₹14,999')">ORDER NOW</button></div>
-<div class="card" data-cat="ghar"><img src="https://images.unsplash.com/photo-1578500494198-246f612d3b3d?w=400"><h3>Wall Clock - Stylish</h3><div class="price">₹349 <span class="old">₹799</span></div><button onclick="order('Wall Clock ₹349')">ORDER NOW</button></div>
-<div class="card" data-cat="mobile"><img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400"><h3>iPhone 15 Pro - New</h3><div class="price">₹89,999 <span class="old">₹1,29,999</span></div><button onclick="order('iPhone 15 Pro ₹89,999')">ORDER NOW</button></div>
-<div class="card" data-cat="mobile"><img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400"><h3>Wireless Headphone</h3><div class="price">₹699 <span class="old">₹1,499</span></div><button onclick="order('Headphone ₹699')">ORDER NOW</button></div>
-<div class="card" data-cat="watch"><img src="https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=400"><h3>Premium Watch - Gold</h3><div class="price">₹999 <span class="old">₹2,999</span></div><button onclick="order('Premium Watch ₹999')">ORDER NOW</button></div>
-<div class="card" data-cat="sona"><img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400"><h3>Gold Chain - Style</h3><div class="price">₹4,999 <span class="old">₹12,999</span></div><button onclick="order('Gold Chain ₹4,999')">ORDER NOW</button></div>
+<div class="card">
+<div style="font-size:50px">👑 💎</div>
+<h1>bazaar.com</h1>
+<h2>AMEER BAZAAR - MALIK AZAM</h2>
+<div class="phone">📞 9528825250</div>
+<p>Aligarh - ameer-bazaar.com</p>
+<div class="icons">
+<div>🚗<br>Gadi</div>
+<div>🏰<br>Kothi</div>
+<div>💎<br>Sona</div>
+<div>⌚<br>Rolex</div>
+<div>📱<br>iPhone</div>
+<div>🏞️<br>Plot</div>
+<div>🛒<br>Goods</div>
 </div>
-<div class="owner"><h3>🏠 HOUSE BAZAAR</h3><p>Aligarh</p><p style="margin:8px 0">📞 9528825250</p><p style="font-size:13px;color:#ccc">Kothi • Plot • Ghar Ka Saman • Sab Kuch Milega</p></div>
-<div class="footer"><h3>🏠 HOUSE BAZAAR</h3><p>© 2026 House Bazaar - Aligarh</p></div>
-<div class="bottom"><a href="#">🏠<br>Home</a><a href="https://wa.me/919528825250">💬<br>WhatsApp</a><a href="tel:9528825250">📞<br>Call</a></div>
-<script>
-function order(p){window.open("https://wa.me/919528825250?text=Salam, Mujhe chahiye: "+p+" - House Bazaar","_blank");}
-function show(cat,btn){document.querySelectorAll('.cats button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.card').forEach(c=>{c.style.display=(cat=='all'||c.dataset.cat==cat)?'block':'none';});}
-</script>
+<br>
+<a href="tel:9528825250"><button>📞 CALL KARO</button></a>
+<a href="https://wa.me/919528825250"><button>💬 WHATSAPP</button></a>
+</div>
 </body>
 </html>
