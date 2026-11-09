@@ -18,13 +18,15 @@ input{padding:13px;width:92%;border-radius:10px;font-size:16px;margin:8px 0;bord
 .bottom{background:#12002a;border:4px solid gold;border-radius:18px;margin:10px;padding:12px}
 .footer{background:gold;color:black;padding:12px;font-weight:bold;margin:10px;border-radius:12px}
 .count{background:white;color:black;padding:8px;border-radius:8px;font-weight:bold;margin:5px;display:inline-block}
+.hint{background:#FFD700;color:black;padding:8px;margin:5px 10px;border-radius:8px;font-size:13px;font-weight:bold}
 </style>
 </head>
 <body>
 <div class="top">
 <div style="font-size:45px">👑 💎</div><h1>bazaar.com</h1><h2>AMEER BAZAAR - MALIK AZAM</h2>
 <div class="phone">📞 9528825250</div><p>Aligarh - ameer-bazaar.com</p>
-<input id="search" onkeyup="filter()" placeholder="🔍 Dhoondo - iPhone 15, Fortuner, Kothi...">
+<input id="search" onkeyup="filter()" placeholder="🔍 Likho - iPhone, Gadi, Kothi, Sona...">
+<div class="hint">Try karo: `i phone chahiye` `mujhe gadi chahiye` `kothi chahiye`</div>
 <div class="icons">
 <button onclick="show('all',this)" class="active">⭐<br>SAB (175)</button>
 <button onclick="show('iphone',this)">📱<br>iPhone (25)</button>
@@ -67,15 +69,34 @@ let data=[
 {name:"Bartan Set Steel",cat:"goods",price:"₹2,999",img:GO},{name:"Gas Stove + Cylinder",cat:"goods",price:"₹4,500",img:GO},{name:"Double Bed + Gadda",cat:"goods",price:"₹18,000",img:GO},{name:"Sofa Set 5 Seater",cat:"goods",price:"₹25,000",img:GO},{name:"Dining Table 6 Seater",cat:"goods",price:"₹22,000",img:GO},{name:"Fridge Double Door",cat:"goods",price:"₹28,000",img:GO},{name:"Fridge Single Door",cat:"goods",price:"₹16,000",img:GO},{name:"Washing Machine",cat:"goods",price:"₹19,000",img:GO},{name:"AC 1.5 Ton",cat:"goods",price:"₹32,000",img:GO},{name:"Cooler Big",cat:"goods",price:"₹8,500",img:GO},{name:"LED TV 43 Inch",cat:"goods",price:"₹22,000",img:GO},{name:"LED TV 55 Inch",cat:"goods",price:"₹38,000",img:GO},{name:"Microwave Oven",cat:"goods",price:"₹8,000",img:GO},{name:"Mixer Grinder",cat:"goods",price:"₹3,500",img:GO},{name:"Inverter + Battery",cat:"goods",price:"₹18,500",img:GO},{name:"Almirah Steel",cat:"goods",price:"₹14,000",img:GO},{name:"Almirah Wooden",cat:"goods",price:"₹19,000",img:GO},{name:"Study Table",cat:"goods",price:"₹5,500",img:GO},{name:"Computer Table",cat:"goods",price:"₹6,500",img:GO},{name:"Laptop HP i5",cat:"goods",price:"₹32,000",img:GO},{name:"Laptop Dell i7",cat:"goods",price:"₹45,000",img:GO},{name:"Printer HP",cat:"goods",price:"₹9,500",img:GO},{name:"CCTV Camera Set",cat:"goods",price:"₹12,000",img:GO},{name:"Water Purifier RO",cat:"goods",price:"₹9,999",img:GO},{name:"Silai Machine",cat:"goods",price:"₹7,500",img:GO},
 ];
 let cur='all';
+function smartCat(q){
+q=q.toLowerCase();
+if(q.includes('i phone')||q.includes('iphone')||q.includes('phone')||q.includes('mobile')||q.includes('apple')) return 'iphone';
+if(q.includes('gadi')||q.includes('car')||q.includes('thar')||q.includes('fortuner')||q.includes('bmw')||q.includes('audi')||q.includes('scorpio')||q.includes('innova')) return 'gadi';
+if(q.includes('kothi')||q.includes('makan')||q.includes('villa')||q.includes('flat')||q.includes('ghar')||q.includes('house')) return 'kothi';
+if(q.includes('sona')||q.includes('gold')||q.includes('heera')||q.includes('diamond')||q.includes('haar')||q.includes('chain')) return 'sona';
+if(q.includes('rolex')||q.includes('ghadi')||q.includes('watch')||q.includes('gadi')==false && q.includes('ghadi')) return 'rolex';
+if(q.includes('plot')||q.includes('jameen')||q.includes('zameen')||q.includes('gaj')) return 'plot';
+if(q.includes('goods')||q.includes('bartan')||q.includes('fridge')||q.includes('sofa')||q.includes('bed')||q.includes('tv')||q.includes('saman')) return 'goods';
+return null;
+}
 function render(){
-let q=document.getElementById('search').value.toLowerCase();
-let filtered=data.filter(d=>(cur=='all'||d.cat==cur)&&d.name.toLowerCase().includes(q));
+let raw=document.getElementById('search').value.toLowerCase().trim();
+let q=raw.replace(/chahiye|mujhe|mujko|dikhao|dikhaye|chiye|wala|wali|ka|ki|ko|hai|hain|/g,'').trim();
+let sc=smartCat(raw);
+let filtered=data.filter(d=>{
+if(sc && cur=='all') return d.cat==sc || d.name.toLowerCase().includes(q);
+if(cur!='all') return d.cat==cur && (d.name.toLowerCase().includes(q) || sc==cur || q=='' || sc==null && true);
+return d.name.toLowerCase().includes(q) || (sc && d.cat==sc);
+});
+if(sc && q.length<3) filtered=data.filter(d=>d.cat==sc);
+if(raw=='' ) filtered=data.filter(d=>cur=='all'||d.cat==cur);
 document.getElementById('cnt').innerText="Dikh raha hai : "+filtered.length+" Cheezein";
 let html=''; filtered.forEach(d=>{html+=`<div class="card"><img src="${d.img}"><b>${d.name}</b><br><small>${d.price}</small><br><a href="https://wa.me/919528825250?text=Mujhe ${encodeURIComponent(d.name)} chahiye - ${d.price}"><button style="width:100%;background:gold;padding:8px;border:none;border-radius:8px;font-weight:bold">BUY KARO</button></a></div>`;});
 if(!html) html='<p style="color:white">Kuch nahi mila, WhatsApp karo!</p>';
 document.getElementById('list').innerHTML=html;
 }
-function show(c,btn){cur=c;document.querySelectorAll('.icons button').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');render();window.scrollTo(0,420);}
+function show(c,btn){cur=c;document.getElementById('search').value='';document.querySelectorAll('.icons button').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');render();window.scrollTo(0,420);}
 function filter(){render();} render();
 </script>
 </body>
