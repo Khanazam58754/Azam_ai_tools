@@ -5,54 +5,90 @@
 <title>bazaar.com - AMEER BAZAAR - MALIK AZAM</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#1a0033;font-family:Arial;text-align:center;color:gold}
-.card{background: radial-gradient(circle, #2a0a4a, #12002a);border:4px solid gold;border-radius:18px;margin:10px;padding:15px;box-shadow:0 0 25px gold}
+body{margin:0;background:#0a001a;font-family:Arial;text-align:center;color:gold}
+.top{background:radial-gradient(circle,#2a0a4a,#12002a);border:4px solid gold;border-radius:18px;margin:10px;padding:15px}
 h1{font-size:36px;margin:5px;color:#FFD700}
-h2{font-size:22px;margin:5px}
 .phone{font-size:22px;background:gold;color:black;padding:10px 18px;border-radius:10px;font-weight:bold;display:inline-block}
-.icons{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:12px}
-.icons div{background:#220044;border:2px solid gold;border-radius:12px;padding:10px;width:85px;font-size:13px}
-button{background:gold;color:black;padding:13px 18px;font-size:18px;font-weight:bold;border:none;border-radius:10px;margin:6px}
+button{background:gold;color:black;padding:11px 12px;font-size:15px;font-weight:bold;border:none;border-radius:10px;margin:4px;cursor:pointer}
+button.active{background:white;color:#1a0033;border:2px solid gold}
 input{padding:13px;width:92%;border-radius:10px;font-size:16px;margin:8px 0;border:2px solid gold}
-.box{background:white;color:black;border-radius:14px;padding:12px;margin:10px;text-align:left}
-.box b{font-size:18px}
+.grid{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;padding:5px}
+.card{background:white;color:black;width:160px;border-radius:14px;padding:8px;text-align:left;border:3px solid gold}
+.card img{width:100%;height:110px;object-fit:cover;border-radius:10px}
+.card b{font-size:15px}
+.card small{color:green;font-weight:bold}
+.bottom{background:#12002a;border:4px solid gold;border-radius:18px;margin:10px;padding:12px}
 .footer{background:gold;color:black;padding:12px;font-weight:bold;margin:10px;border-radius:12px}
 </style>
 </head>
 <body>
-<div class="card">
+
+<div class="top">
 <div style="font-size:45px">👑 💎</div>
 <h1>bazaar.com</h1>
 <h2>AMEER BAZAAR - MALIK AZAM</h2>
 <div class="phone">📞 9528825250</div>
 <p>Aligarh - ameer-bazaar.com</p>
-<div class="icons">
-<div>🚗<br>Gadi</div>
-<div>🏰<br>Kothi</div>
-<div>💎<br>Sona</div>
-<div>⌚<br>Rolex</div>
-<div>📱<br>iPhone</div>
-<div>🏞️<br>Plot</div>
-<div>🛒<br>Goods</div>
-</div>
+<input id="search" onkeyup="filter()" placeholder="🔍 Dhoondo - iPhone 15, Fortuner, Kothi...">
 <br>
+<button onclick="show('all',this)" class="active">SAB</button>
+<button onclick="show('iphone',this)">📱 iPhone</button>
+<button onclick="show('gadi',this)">🚗 Gadi</button>
+<button onclick="show('kothi',this)">🏰 Kothi</button>
+<button onclick="show('sona',this)">💎 Sona</button>
+<button onclick="show('rolex',this)">⌚ Rolex</button>
+<button onclick="show('plot',this)">🏞️ Plot</button>
+<button onclick="show('goods',this)">🛒 Goods</button>
+</div>
+
+<div class="grid" id="list"></div>
+
+<div class="bottom">
+<h2>AMEER BAZAAR</h2>
+<p>MALIK AZAM | 9528825250 | LUXURY | TRUST | BEST RATE</p>
 <a href="tel:9528825250"><button>📞 CALL KARO</button></a>
 <a href="https://wa.me/919528825250"><button>💬 WHATSAPP</button></a>
-
-<br>
-<input placeholder="🔍 Kya chahiye? Gadi, Kothi, Sona...">
-<br><button onclick="window.location.href='https://wa.me/919528825250'">DHOONDO</button>
 </div>
+<div class="footer">⭐ AMEER BAZAAR - MALIK AZAM - 9528825250 ⭐</div>
 
-<div class="card">
-<h2>🔥 AAJ KE SAUDE 🔥</h2>
-<div class="box">🚗 <b>Luxury Gadi</b><br>Call karo - Best Rate - 9528825250</div>
-<div class="box">🏰 <b>Big Kothi / Plot - Aligarh</b><br>Call karo - Best Location</div>
-<div class="box">💎 <b>Sona - Gold Jewellery</b><br>Call karo - Shuddh Sona</div>
-<div class="box">🛒 <b>HOUSE BAZAAR - Goods</b><br>Bartan, Stove, Bag, Sab Milega</div>
-</div>
-
-<div class="footer">⭐ AMEER BAZAAR - MALIK AZAM - 9528825250 ⭐<br>bazaar.com</div>
-
+<script>
+let data=[
+{name:"iPhone 15 Pro Max",cat:"iphone",price:"₹1,20,000",img:"https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=400"},
+{name:"iPhone 14 Pro",cat:"iphone",price:"₹85,000",img:"https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400"},
+{name:"iPhone 13",cat:"iphone",price:"₹42,000",img:"https://images.unsplash.com/photo-1632661677709-2d3d8e0b3b3a?w=400"},
+{name:"iPhone 16",cat:"iphone",price:"₹79,999",img:"https://images.unsplash.com/photo-1592286927505-1def25115558?w=400"},
+{name:"Fortuner",cat:"gadi",price:"₹32,00,000",img:"https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=400"},
+{name:"Thar",cat:"gadi",price:"₹15,00,000",img:"https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=400"},
+{name:"BMW",cat:"gadi",price:"₹45,00,000",img:"https://images.unsplash.com/photo-1555215695-3004980ad54e?w=400"},
+{name:"Audi",cat:"gadi",price:"₹52,00,000",img:"https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?w=400"},
+{name:"5 BHK Kothi - Aligarh",cat:"kothi",price:"₹1.2 Cr",img:"https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400"},
+{name:"3 BHK Kothi - Civil Lines",cat:"kothi",price:"₹85 Lakh",img:"https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400"},
+{name:"Villa - Delhi Road",cat:"kothi",price:"₹2.5 Cr",img:"https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400"},
+{name:"Gold Haar Set",cat:"sona",price:"₹2,50,000",img:"https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400"},
+{name:"Gold Kangan",cat:"sona",price:"₹1,20,000",img:"https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=400"},
+{name:"Diamond Ring",cat:"sona",price:"₹75,000",img:"https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400"},
+{name:"Rolex Gold",cat:"rolex",price:"₹8,50,000",img:"https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=400"},
+{name:"Rolex Datejust",cat:"rolex",price:"₹6,20,000",img:"https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=400"},
+{name:"Plot 200 Gaj - Aligarh",cat:"plot",price:"₹25 Lakh",img:"https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400"},
+{name:"Plot 100 Gaj",cat:"plot",price:"₹12 Lakh",img:"https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400"},
+{name:"Bartan Set",cat:"goods",price:"₹2,999",img:"https://images.unsplash.com/photo-1584990347449-a2d4c2c6e7c0?w=400"},
+{name:"Gas Stove + Cylinder",cat:"goods",price:"₹4,500",img:"https://images.unsplash.com/photo-1585515320310-259814833e62?w=400"},
+];
+let cur='all';
+function render(){
+let q=document.getElementById('search').value.toLowerCase();
+let html='';
+data.forEach(d=>{
+if((cur=='all'||d.cat==cur) && d.name.toLowerCase().includes(q)){
+html+=`<div class="card"><img src="${d.img}"><b>${d.name}</b><br><small>${d.price}</small><br><a href="https://wa.me/919528825250?text=Mujhe ${d.name} chahiye"><button style="width:100%">BUY KARO</button></a></div>`;
+}
+});
+if(!html) html='<p style="color:white">Kuch nahi mila, WhatsApp karo!</p>';
+document.getElementById('list').innerHTML=html;
+}
+function show(c,btn){cur=c; document.querySelectorAll('.top button').forEach(b=>b.classList.remove('active')); if(btn) btn.classList.add('active'); render();}
+function filter(){render();}
+render();
+</script>
 </body>
 </html>
