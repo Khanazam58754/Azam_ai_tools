@@ -1,103 +1,129 @@
 <!DOCTYPE html>
-<html>
+<html lang="hi">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>bazaar.com - AMEER BAZAAR - MALIK AZAM</title>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI FUTURE - 30 AI Tools Website</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#0a001a;font-family:Arial;text-align:center;color:gold}
-.top{background:radial-gradient(circle,#2a0a4a,#12002a);border:4px solid gold;border-radius:18px;margin:10px;padding:15px}
-h1{font-size:36px;margin:5px;color:#FFD700}.phone{font-size:22px;background:gold;color:black;padding:10px 18px;border-radius:10px;font-weight:bold;display:inline-block}
-.icons{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:12px}
-.icons button{background:#220044;color:gold;border:2px solid gold;border-radius:14px;padding:12px;width:100px;font-size:15px;font-weight:bold}
-.icons button.active{background:gold;color:black}
-button.big{background:gold;color:black;padding:13px 18px;font-size:18px;font-weight:bold;border:none;border-radius:10px;margin:6px}
-input{padding:13px;width:92%;border-radius:10px;font-size:16px;margin:8px 0;border:2px solid gold}
-.grid{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;padding:5px}
-.card{background:white;color:black;width:160px;border-radius:14px;padding:8px;text-align:left;border:3px solid gold}
-.card img{width:100%;height:110px;object-fit:cover;border-radius:10px}.card b{font-size:14px}.card small{color:green;font-weight:bold}
-.bottom{background:#12002a;border:4px solid gold;border-radius:18px;margin:10px;padding:12px}
-.footer{background:gold;color:black;padding:12px;font-weight:bold;margin:10px;border-radius:12px}
-.count{background:white;color:black;padding:8px;border-radius:8px;font-weight:bold;margin:5px;display:inline-block}
-.hint{background:#FFD700;color:black;padding:8px;margin:5px 10px;border-radius:8px;font-size:13px;font-weight:bold}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#0a0a1a;color:#fff}
+.top{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;background:#11112e;position:sticky;top:0;z-index:20}
+.logo{font-size:22px;font-weight:900}.logo span{color:#a855f7}
+.pill{background:#a855f7;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:800}
+.hero{padding:22px 16px;background:linear-gradient(135deg,#4c1d95,#7c3aed,#db2777)}
+.hero h1{font-size:28px;line-height:1.2}.hero h1 span{color:#facc15}
+.hero p{margin:10px 0;color:#ddd;font-size:14px;line-height:1.5}
+.search{display:flex;background:#fff;border-radius:50px;padding:4px;margin-top:14px}
+.search input{flex:1;border:none;outline:none;padding:12px 14px;border-radius:50px;font-size:15px;color:#000}
+.search button{background:#7c3aed;color:#fff;border:none;padding:11px 18px;border-radius:50px;font-weight:800}
+.stats{display:flex;gap:10px;margin-top:14px}
+.stat{flex:1;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:12px;text-align:center}
+.stat b{font-size:18px;display:block}.stat span{font-size:11px;opacity:.8}
+.cats{display:flex;gap:8px;overflow:auto;padding:14px;white-space:nowrap}
+.cats button{background:#1e1e3f;border:1px solid #333;padding:9px 15px;border-radius:50px;color:#fff}
+.cats button.active{background:#a855f7;border-color:#a855f7}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding:0 14px 20px}
+.card{background:#161633;border:1px solid #2d2d5a;border-radius:16px;padding:14px;cursor:pointer}
+.card:hover{border-color:#a855f7}
+.card .ic{font-size:28px}.card h3{font-size:14px;margin:7px 0 4px;line-height:1.3}.card p{font-size:11px;color:#aaa;line-height:1.4;min-height:28px}
+.free{background:#22c55e;color:#000;font-size:10px;padding:3px 7px;border-radius:20px;font-weight:800}
+.prem{background:#facc15;color:#000;font-size:10px;padding:3px 7px;border-radius:20px;font-weight:800}
+.quick{background:#1e1e3f;margin:0 14px 14px;border-radius:16px;padding:14px}
+.quick h3{font-size:15px;margin-bottom:10px}
+.qgrid{display:flex;gap:10px}.qgrid div{flex:1;text-align:center;background:#2a2a55;padding:12px 4px;border-radius:12px;font-size:12px}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:flex-end;justify-content:center;z-index:99}
+.modal.open{display:flex}
+.box{background:#fff;color:#000;width:100%;max-width:600px;border-radius:20px 20px 0 0;padding:20px;max-height:92vh;overflow:auto}
+.box input,.box textarea,.box select{width:100%;padding:12px;border:1px solid #ddd;border-radius:12px;margin:8px 0;font-size:15px}
+.btn{width:100%;background:#7c3aed;color:#fff;border:none;padding:14px;border-radius:12px;font-weight:800;font-size:16px}
+.out{background:#f1f5f9;padding:13px;border-radius:12px;margin-top:12px;white-space:pre-wrap;display:none;font-size:14px;line-height:1.6}
+footer{text-align:center;padding:18px;color:#888;font-size:12px;line-height:1.6}
 </style>
 </head>
 <body>
-<div class="top">
-<div style="font-size:45px">👑 💎</div><h1>bazaar.com</h1><h2>AMEER BAZAAR - MALIK AZAM</h2>
-<div class="phone">📞 9528825250</div><p>Aligarh - ameer-bazaar.com</p>
-<input id="search" onkeyup="filter()" placeholder="🔍 Likho - iPhone, Gadi, Kothi, Sona...">
-<div class="hint">Try karo: `i phone chahiye` `mujhe gadi chahiye` `kothi chahiye`</div>
-<div class="icons">
-<button onclick="show('all',this)" class="active">⭐<br>SAB (175)</button>
-<button onclick="show('iphone',this)">📱<br>iPhone (25)</button>
-<button onclick="show('gadi',this)">🚗<br>Gadi (25)</button>
-<button onclick="show('kothi',this)">🏰<br>Kothi (25)</button>
-<button onclick="show('sona',this)">💎<br>Sona (25)</button>
-<button onclick="show('rolex',this)">⌚<br>Rolex (25)</button>
-<button onclick="show('plot',this)">🏞️<br>Plot (25)</button>
-<button onclick="show('goods',this)">🛒<br>Goods (25)</button>
-</div><br>
-<a href="tel:9528825250"><button class="big">📞 CALL KARO</button></a>
-<a href="https://wa.me/919528825250"><button class="big">💬 WHATSAPP</button></a>
+<div class="top"><div class="logo">AI <span>FUTURE</span></div><div class="pill">30 TOOLS • FREE + PREMIUM</div></div>
+
+<div class="hero">
+<h1>Welcome back, Azam Bhai 👋<br><span>AI FUTURE - 30 AI Tools</span></h1>
+<p>Aapke liye 30 Powerful AI Tools - Jo aaj bhi kaam aayenge aur aane wali Generation me bhi! Hindi + English me!</p>
+<div class="search"><input id="s" placeholder="Search karo - Photo, Video, Resume..."><button onclick="render()">Search</button></div>
+<div class="stats">
+<div class="stat"><b>9,969</b><span>Token Balance</span></div>
+<div class="stat"><b>101</b><span>Ready to Use</span></div>
+<div class="stat"><b>30</b><span>AI Tools</span></div>
 </div>
-<div id="cnt" class="count"></div>
-<div class="grid" id="list"></div>
-<div class="bottom"><h2>AMEER BAZAAR</h2><p>MALIK AZAM | 9528825250 | LUXURY | TRUST | BEST RATE</p></div>
-<div class="footer">⭐ AMEER BAZAAR - MALIK AZAM - 9528825250 ⭐</div>
+</div>
+
+<div class="quick"><h3>⚡ Quick Actions - Jaldi Use Karo</h3><div class="qgrid">
+<div onclick="openTool(1)">🖼️<br>AI Chat</div>
+<div onclick="openTool(2)">✍️<br>Content Writer</div>
+<div onclick="openTool(7)">💻<br>Code Generator</div>
+<div onclick="openTool(18)">🌐<br>Translator</div>
+</div></div>
+
+<div class="cats" id="cats"></div>
+<div class="grid" id="grid"></div>
+
+<div class="modal" id="modal"><div class="box">
+<span style="float:right;font-size:22px;cursor:pointer" onclick="closeM()">✕</span>
+<h2 id="mt">Tool</h2><p id="md" style="color:#666;font-size:13px"></p>
+<input id="mi" placeholder="Apna Naam / Topic likho...">
+<textarea id="mi2" placeholder="Detail likho..."></textarea>
+<select id="lang"><option>Hindi + English</option><option>Hindi Only</option><option>English Only</option></select>
+<button class="btn" onclick="gen()">✨ AI Se Banao →</button>
+<div class="out" id="mo"></div>
+<p style="text-align:center;font-size:11px;color:#888;margin-top:10px">AI FUTURE • Free 3 Use Roz • Premium ke liye WhatsApp karo</p>
+</div></div>
+
+<footer><b style="color:#fff">AI FUTURE - 30 AI Tools Website</b><br>Made by Azam Bhai • Agra, Uttar Pradesh<br>Free + Premium • Hindi + English</footer>
+
 <script>
-let IP="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400";
-let GA="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=400";
-let KO="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400";
-let SO="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400";
-let RO="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=400";
-let PL="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400";
-let GO="https://images.unsplash.com/photo-1584990347449-a2d4c2c6e7c0?w=400";
-let data=[
-// iPHONE 25
-{name:"iPhone 15 Pro Max 256GB",cat:"iphone",price:"₹1,20,000",img:IP},{name:"iPhone 15 Pro 128GB",cat:"iphone",price:"₹1,05,000",img:IP},{name:"iPhone 15 Plus",cat:"iphone",price:"₹85,000",img:IP},{name:"iPhone 15",cat:"iphone",price:"₹72,000",img:IP},{name:"iPhone 14 Pro Max",cat:"iphone",price:"₹98,000",img:IP},{name:"iPhone 14 Pro",cat:"iphone",price:"₹85,000",img:IP},{name:"iPhone 14 Plus",cat:"iphone",price:"₹62,000",img:IP},{name:"iPhone 14",cat:"iphone",price:"₹52,000",img:IP},{name:"iPhone 13 Pro Max",cat:"iphone",price:"₹75,000",img:IP},{name:"iPhone 13 Pro",cat:"iphone",price:"₹62,000",img:IP},{name:"iPhone 13",cat:"iphone",price:"₹42,000",img:IP},{name:"iPhone 13 Mini",cat:"iphone",price:"₹35,000",img:IP},{name:"iPhone 12 Pro Max",cat:"iphone",price:"₹55,000",img:IP},{name:"iPhone 12 Pro",cat:"iphone",price:"₹45,000",img:IP},{name:"iPhone 12",cat:"iphone",price:"₹32,000",img:IP},{name:"iPhone 12 Mini",cat:"iphone",price:"₹25,000",img:IP},{name:"iPhone 11 Pro Max",cat:"iphone",price:"₹38,000",img:IP},{name:"iPhone 11 Pro",cat:"iphone",price:"₹30,000",img:IP},{name:"iPhone 11",cat:"iphone",price:"₹22,000",img:IP},{name:"iPhone 16",cat:"iphone",price:"₹79,999",img:IP},{name:"iPhone 16 Pro",cat:"iphone",price:"₹1,15,000",img:IP},{name:"iPhone 16 Pro Max",cat:"iphone",price:"₹1,35,000",img:IP},{name:"iPhone SE 2022",cat:"iphone",price:"₹28,000",img:IP},{name:"iPhone XR",cat:"iphone",price:"₹18,000",img:IP},{name:"iPhone XS Max",cat:"iphone",price:"₹24,000",img:IP},
-// GADI 25
-{name:"Fortuner 4x4",cat:"gadi",price:"₹32,00,000",img:GA},{name:"Fortuner Legender",cat:"gadi",price:"₹38,00,000",img:GA},{name:"Thar 4x4",cat:"gadi",price:"₹15,00,000",img:GA},{name:"Thar Roxx",cat:"gadi",price:"₹17,50,000",img:GA},{name:"Scorpio N",cat:"gadi",price:"₹16,50,000",img:GA},{name:"Scorpio Classic",cat:"gadi",price:"₹13,00,000",img:GA},{name:"Innova Crysta",cat:"gadi",price:"₹22,00,000",img:GA},{name:"Innova Hycross",cat:"gadi",price:"₹26,00,000",img:GA},{name:"BMW X5",cat:"gadi",price:"₹85,00,000",img:GA},{name:"BMW 3 Series",cat:"gadi",price:"₹45,00,000",img:GA},{name:"BMW 5 Series",cat:"gadi",price:"₹65,00,000",img:GA},{name:"Audi A4",cat:"gadi",price:"₹42,00,000",img:GA},{name:"Audi Q5",cat:"gadi",price:"₹62,00,000",img:GA},{name:"Audi Q7",cat:"gadi",price:"₹85,00,000",img:GA},{name:"Mercedes C-Class",cat:"gadi",price:"₹58,00,000",img:GA},{name:"Mercedes E-Class",cat:"gadi",price:"₹72,00,000",img:GA},{name:"Mercedes GLE",cat:"gadi",price:"₹92,00,000",img:GA},{name:"Swift Dzire",cat:"gadi",price:"₹7,50,000",img:GA},{name:"Swift",cat:"gadi",price:"₹6,50,000",img:GA},{name:"Baleno",cat:"gadi",price:"₹7,20,000",img:GA},{name:"Creta",cat:"gadi",price:"₹12,50,000",img:GA},{name:"Seltos",cat:"gadi",price:"₹13,50,000",img:GA},{name:"Harrier",cat:"gadi",price:"₹18,00,000",img:GA},{name:"Safari",cat:"gadi",price:"₹19,00,000",img:GA},{name:"Bolero",cat:"gadi",price:"₹9,50,000",img:GA},
-// KOTHI 25
-{name:"5 BHK Kothi - Aligarh",cat:"kothi",price:"₹1.2 Cr",img:KO},{name:"3 BHK Kothi - Civil Lines",cat:"kothi",price:"₹85 Lakh",img:KO},{name:"4 BHK Kothi - Delhi Road",cat:"kothi",price:"₹1.5 Cr",img:KO},{name:"6 BHK Villa - Quarsi",cat:"kothi",price:"₹2.5 Cr",img:KO},{name:"2 BHK Makan - Ramghat",cat:"kothi",price:"₹45 Lakh",img:KO},{name:"3 BHK Makan - Sasni Gate",cat:"kothi",price:"₹55 Lakh",img:KO},{name:"4 BHK Duplex - Marris Road",cat:"kothi",price:"₹95 Lakh",img:KO},{name:"5 BHK Corner Kothi",cat:"kothi",price:"₹1.8 Cr",img:KO},{name:"7 BHK Royal Kothi",cat:"kothi",price:"₹3.2 Cr",img:KO},{name:"3 BHK Flat - Agra Road",cat:"kothi",price:"₹38 Lakh",img:KO},{name:"2 BHK Flat - Anupshahar",cat:"kothi",price:"₹28 Lakh",img:KO},{name:"4 BHK Flat - Centre Point",cat:"kothi",price:"₹65 Lakh",img:KO},{name:"Farmhouse - G.T Road",cat:"kothi",price:"₹4.5 Cr",img:KO},{name:"Farmhouse - Khair Road",cat:"kothi",price:"₹2.8 Cr",img:KO},{name:"Dukan + Makan - Bara Bazar",cat:"kothi",price:"₹1.1 Cr",img:KO},{name:"Showroom - G.T Road",cat:"kothi",price:"₹2.2 Cr",img:KO},{name:"Godown - Industrial Area",cat:"kothi",price:"₹90 Lakh",img:KO},{name:"Hostel Building",cat:"kothi",price:"₹1.6 Cr",img:KO},{name:"School Building",cat:"kothi",price:"₹3.5 Cr",img:KO},{name:"Hotel - Near Station",cat:"kothi",price:"₹5 Cr",img:KO},{name:"2 BHK Kothi - Naurangabad",cat:"kothi",price:"₹42 Lakh",img:KO},{name:"3 BHK Kothi - Jeevangarh",cat:"kothi",price:"₹58 Lakh",img:KO},{name:"4 BHK Kothi - Medical Road",cat:"kothi",price:"₹1.3 Cr",img:KO},{name:"5 BHK Kothi - Dodhpur",cat:"kothi",price:"₹1.7 Cr",img:KO},{name:"Luxury Villa - Aligarh",cat:"kothi",price:"₹2.1 Cr",img:KO},
-// SONA 25
-{name:"Gold Haar Set 100g",cat:"sona",price:"₹7,50,000",img:SO},{name:"Gold Haar Set 50g",cat:"sona",price:"₹3,80,000",img:SO},{name:"Gold Kangan 2 Pcs",cat:"sona",price:"₹1,20,000",img:SO},{name:"Gold Chudi Set",cat:"sona",price:"₹95,000",img:SO},{name:"Gold Ring 8g",cat:"sona",price:"₹62,000",img:SO},{name:"Gold Ring 10g",cat:"sona",price:"₹78,000",img:SO},{name:"Diamond Ring",cat:"sona",price:"₹75,000",img:SO},{name:"Diamond Earrings",cat:"sona",price:"₹1,10,000",img:SO},{name:"Diamond Necklace",cat:"sona",price:"₹2,80,000",img:SO},{name:"Gold Chain 20g",cat:"sona",price:"₹1,55,000",img:SO},{name:"Gold Chain 30g",cat:"sona",price:"₹2,30,000",img:SO},{name:"Gold Chain 50g",cat:"sona",price:"₹3,85,000",img:SO},{name:"Gold Bracelet",cat:"sona",price:"₹1,05,000",img:SO},{name:"Gold Jhumka",cat:"sona",price:"₹68,000",img:SO},{name:"Gold Mangalsutra",cat:"sona",price:"₹85,000",img:SO},{name:"Gold Nath",cat:"sona",price:"₹32,000",img:SO},{name:"Gold Tika",cat:"sona",price:"₹28,000",img:SO},{name:"Gold Kada 50g",cat:"sona",price:"₹3,90,000",img:SO},{name:"Gold Biscuit 10g",cat:"sona",price:"₹78,000",img:SO},{name:"Gold Biscuit 20g",cat:"sona",price:"₹1,56,000",img:SO},{name:"Gold Coin 8g",cat:"sona",price:"₹62,000",img:SO},{name:"Silver Payal",cat:"sona",price:"₹12,000",img:SO},{name:"Silver Thali Set",cat:"sona",price:"₹25,000",img:SO},{name:"Silver Murti",cat:"sona",price:"₹18,000",img:SO},{name:"Platinum Ring",cat:"sona",price:"₹45,000",img:SO},
-// ROLEX 25
-{name:"Rolex Gold",cat:"rolex",price:"₹8,50,000",img:RO},{name:"Rolex Datejust",cat:"rolex",price:"₹6,20,000",img:RO},{name:"Rolex Submariner",cat:"rolex",price:"₹12,50,000",img:RO},{name:"Rolex Daytona",cat:"rolex",price:"₹28,00,000",img:RO},{name:"Rolex GMT Master",cat:"rolex",price:"₹15,00,000",img:RO},{name:"Rolex Day-Date",cat:"rolex",price:"₹22,00,000",img:RO},{name:"Rolex Oyster Perpetual",cat:"rolex",price:"₹5,80,000",img:RO},{name:"Rolex Explorer",cat:"rolex",price:"₹7,20,000",img:RO},{name:"Rolex Yacht Master",cat:"rolex",price:"₹14,00,000",img:RO},{name:"Rolex Sea-Dweller",cat:"rolex",price:"₹11,50,000",img:RO},{name:"Casio Gold",cat:"rolex",price:"₹12,000",img:RO},{name:"Fossil Chronograph",cat:"rolex",price:"₹15,000",img:RO},{name:"Titan Edge",cat:"rolex",price:"₹22,000",img:RO},{name:"Titan Gold",cat:"rolex",price:"₹28,000",img:RO},{name:"Fastrack Smart",cat:"rolex",price:"₹4,500",img:RO},{name:"Apple Watch Ultra",cat:"rolex",price:"₹85,000",img:RO},{name:"Apple Watch Series 9",cat:"rolex",price:"₹42,000",img:RO},{name:"Samsung Galaxy Watch",cat:"rolex",price:"₹28,000",img:RO},{name:"Hublot Big Bang",cat:"rolex",price:"₹18,00,000",img:RO},{name:"Omega Speedmaster",cat:"rolex",price:"₹5,50,000",img:RO},{name:"Omega Seamaster",cat:"rolex",price:"₹4,80,000",img:RO},{name:"Tag Heuer Carrera",cat:"rolex",price:"₹3,20,000",img:RO},{name:"Tissot PRX",cat:"rolex",price:"₹55,000",img:RO},{name:"Seiko Prospex",cat:"rolex",price:"₹38,000",img:RO},{name:"Rado Captain Cook",cat:"rolex",price:"₹1,85,000",img:RO},
-// PLOT 25
-{name:"Plot 100 Gaj - Aligarh",cat:"plot",price:"₹12 Lakh",img:PL},{name:"Plot 200 Gaj - Aligarh",cat:"plot",price:"₹25 Lakh",img:PL},{name:"Plot 150 Gaj - Quarsi",cat:"plot",price:"₹18 Lakh",img:PL},{name:"Plot 300 Gaj - Delhi Road",cat:"plot",price:"₹42 Lakh",img:PL},{name:"Plot 500 Gaj - G.T Road",cat:"plot",price:"₹75 Lakh",img:PL},{name:"Plot 1000 Gaj - Farm",cat:"plot",price:"₹1.2 Cr",img:PL},{name:"Plot 80 Gaj - Ramghat",cat:"plot",price:"₹9 Lakh",img:PL},{name:"Plot 120 Gaj - Medical",cat:"plot",price:"₹15 Lakh",img:PL},{name:"Plot 250 Gaj - Agra Road",cat:"plot",price:"₹30 Lakh",img:PL},{name:"Plot 400 Gaj - Anupshahar",cat:"plot",price:"₹48 Lakh",img:PL},{name:"Plot 200 Gaj - Sasni Gate",cat:"plot",price:"₹22 Lakh",img:PL},{name:"Plot 100 Gaj - Jeevangarh",cat:"plot",price:"₹11 Lakh",img:PL},{name:"Plot 180 Gaj - Dodhpur",cat:"plot",price:"₹20 Lakh",img:PL},{name:"Plot 220 Gaj - Naurangabad",cat:"plot",price:"₹24 Lakh",img:PL},{name:"Plot 350 Gaj - Khair Road",cat:"plot",price:"₹38 Lakh",img:PL},{name:"Plot 600 Gaj - Industrial",cat:"plot",price:"₹90 Lakh",img:PL},{name:"Plot 1000 Gaj - Industrial",cat:"plot",price:"₹1.5 Cr",img:PL},{name:"Plot 50 Gaj - Bara Bazar",cat:"plot",price:"₹8 Lakh",img:PL},{name:"Plot 75 Gaj - Centre Point",cat:"plot",price:"₹10 Lakh",img:PL},{name:"Plot 125 Gaj - Marris Road",cat:"plot",price:"₹16 Lakh",img:PL},{name:"Plot 175 Gaj - Civil Lines",cat:"plot",price:"₹26 Lakh",img:PL},{name:"Plot 275 Gaj - Delhi Gate",cat:"plot",price:"₹32 Lakh",img:PL},{name:"Plot 450 Gaj - Exhibition",cat:"plot",price:"₹55 Lakh",img:PL},{name:"Plot 800 Gaj - Bypass",cat:"plot",price:"₹95 Lakh",img:PL},{name:"Plot 2000 Gaj - Highway",cat:"plot",price:"₹2.5 Cr",img:PL},
-// GOODS 25
-{name:"Bartan Set Steel",cat:"goods",price:"₹2,999",img:GO},{name:"Gas Stove + Cylinder",cat:"goods",price:"₹4,500",img:GO},{name:"Double Bed + Gadda",cat:"goods",price:"₹18,000",img:GO},{name:"Sofa Set 5 Seater",cat:"goods",price:"₹25,000",img:GO},{name:"Dining Table 6 Seater",cat:"goods",price:"₹22,000",img:GO},{name:"Fridge Double Door",cat:"goods",price:"₹28,000",img:GO},{name:"Fridge Single Door",cat:"goods",price:"₹16,000",img:GO},{name:"Washing Machine",cat:"goods",price:"₹19,000",img:GO},{name:"AC 1.5 Ton",cat:"goods",price:"₹32,000",img:GO},{name:"Cooler Big",cat:"goods",price:"₹8,500",img:GO},{name:"LED TV 43 Inch",cat:"goods",price:"₹22,000",img:GO},{name:"LED TV 55 Inch",cat:"goods",price:"₹38,000",img:GO},{name:"Microwave Oven",cat:"goods",price:"₹8,000",img:GO},{name:"Mixer Grinder",cat:"goods",price:"₹3,500",img:GO},{name:"Inverter + Battery",cat:"goods",price:"₹18,500",img:GO},{name:"Almirah Steel",cat:"goods",price:"₹14,000",img:GO},{name:"Almirah Wooden",cat:"goods",price:"₹19,000",img:GO},{name:"Study Table",cat:"goods",price:"₹5,500",img:GO},{name:"Computer Table",cat:"goods",price:"₹6,500",img:GO},{name:"Laptop HP i5",cat:"goods",price:"₹32,000",img:GO},{name:"Laptop Dell i7",cat:"goods",price:"₹45,000",img:GO},{name:"Printer HP",cat:"goods",price:"₹9,500",img:GO},{name:"CCTV Camera Set",cat:"goods",price:"₹12,000",img:GO},{name:"Water Purifier RO",cat:"goods",price:"₹9,999",img:GO},{name:"Silai Machine",cat:"goods",price:"₹7,500",img:GO},
+const tools=[
+{id:1,icon:"🖼️",name:"1. AI Image Generator",desc:"Likho aur AI Photo bana dega",cat:"Image",type:"free"},
+{id:2,icon:"✨",name:"2. AI Photo Editor",desc:"Photo ko HD, Saaf, Sundar karo",cat:"Image",type:"free"},
+{id:3,icon:"✂️",name:"3. AI Background Remover",desc:"Background 1 Sec me hatao",cat:"Image",type:"free"},
+{id:4,icon:"🎨",name:"4. AI Logo Maker",desc:"Dukaan / Channel ka Logo",cat:"Image",type:"free"},
+{id:5,icon:"📢",name:"5. AI Poster Maker",desc:"Offer / Sale Poster banao",cat:"Image",type:"free"},
+{id:6,icon:"🔥",name:"6. AI Thumbnail Maker",desc:"YouTube Viral Thumbnail",cat:"Image",type:"prem"},
+{id:7,icon:"🎬",name:"7. Text to Video",desc:"Likha hua se Video banao",cat:"Video",type:"prem"},
+{id:8,icon:"📸",name:"8. Image to Video",desc:"Photo se Bolta Video",cat:"Video",type:"prem"},
+{id:9,icon:"🐻",name:"9. AI Cartoon Video Maker",desc:"Cartoon Video banao",cat:"Video",type:"free"},
+{id:10,icon:"🎞️",name:"10. AI Animation Maker",desc:"Animation Video banao",cat:"Video",type:"prem"},
+{id:11,icon:"✂️",name:"11. AI Video Editor",desc:"Video kaat, jodo, saaf karo",cat:"Video",type:"free"},
+{id:12,icon:"📱",name:"12. AI Shorts Maker",desc:"Reels / Shorts banao",cat:"Video",type:"free"},
+{id:13,icon:"🔊",name:"13. Text to Speech",desc:"Likha hua ko bol ke sunao",cat:"Audio",type:"free"},
+{id:14,icon:"🎵",name:"14. AI Music Generator",desc:"Apne Naam pe Gaana banao",cat:"Audio",type:"prem"},
+{id:15,icon:"🎙️",name:"15. AI Voice Creator",desc:"Apni Awaaz badlo, nayi banao",cat:"Audio",type:"free"},
+{id:16,icon:"🧹",name:"16. AI Audio Cleaner",desc:"Awaaz se Shor hatao",cat:"Audio",type:"free"},
+{id:17,icon:"🏷️",name:"17. AI Title Generator",desc:"Viral Title + Tags banao",cat:"Writing",type:"free"},
+{id:18,icon:"✍️",name:"18. AI Writing & Education",desc:"Essay, Story, Blog likho",cat:"Writing",type:"free"},
+{id:19,icon:"📖",name:"19. AI Story Writer",desc:"Kahani, Kissa likh dega",cat:"Writing",type:"free"},
+{id:20,icon:"📝",name:"20. AI Blog Writer",desc:"Blog, Article likh dega",cat:"Writing",type:"free"},
+{id:21,icon:"📄",name:"21. AI Resume Maker",desc:"Job ke liye CV banao",cat:"Job",type:"free"},
+{id:22,icon:"📚",name:"22. AI Homework Helper",desc:"Sawal likho, Jawab pao",cat:"Study",type:"free"},
+{id:23,icon:"🌐",name:"23. AI Translator",desc:"Hindi ↔ English Translator",cat:"Study",type:"free"},
+{id:24,icon:"📑",name:"24. AI PDF Summarizer",desc:"Lambi PDF ka chhota Saar",cat:"Study",type:"prem"},
+{id:25,icon:"💼",name:"25. AI Business Plan Maker",desc:"Business ka pura Plan",cat:"Business",type:"prem"},
+{id:26,icon:"🌐",name:"26. AI Website Builder",desc:"Bol ke Website banvao",cat:"Business",type:"prem"},
+{id:27,icon:"💡",name:"27. AI App Idea Generator",desc:"Naya App / Business Idea",cat:"Business",type:"free"},
+{id:28,icon:"📊",name:"28. AI Business Plan Maker",desc:"5000 me kaunsa Business?",cat:"Business",type:"free"},
+{id:29,icon:"📣",name:"29. AI Marketing Assistant",desc:"Customer ke liye Ad, Post",cat:"Business",type:"free"},
+{id:30,icon:"🤖",name:"30. AI Personal Assistant",desc:"Kuch bhi pucho, AI jawab dega",cat:"Assistant",type:"free"},
 ];
-let cur='all';
-function smartCat(q){
-q=q.toLowerCase();
-if(q.includes('i phone')||q.includes('iphone')||q.includes('phone')||q.includes('mobile')||q.includes('apple')) return 'iphone';
-if(q.includes('gadi')||q.includes('car')||q.includes('thar')||q.includes('fortuner')||q.includes('bmw')||q.includes('audi')||q.includes('scorpio')||q.includes('innova')) return 'gadi';
-if(q.includes('kothi')||q.includes('makan')||q.includes('villa')||q.includes('flat')||q.includes('ghar')||q.includes('house')) return 'kothi';
-if(q.includes('sona')||q.includes('gold')||q.includes('heera')||q.includes('diamond')||q.includes('haar')||q.includes('chain')) return 'sona';
-if(q.includes('rolex')||q.includes('ghadi')||q.includes('watch')||q.includes('gadi')==false && q.includes('ghadi')) return 'rolex';
-if(q.includes('plot')||q.includes('jameen')||q.includes('zameen')||q.includes('gaj')) return 'plot';
-if(q.includes('goods')||q.includes('bartan')||q.includes('fridge')||q.includes('sofa')||q.includes('bed')||q.includes('tv')||q.includes('saman')) return 'goods';
-return null;
-}
+let cur="Sab"; let curT=null;
+const cats=["Sab","Image","Video","Audio","Writing","Study","Job","Business","Assistant"];
+function renderCats(){document.getElementById('cats').innerHTML=cats.map(c=>`<button class="${c===cur?'active':''}" onclick="setCat('${c}')">${c}</button>`).join('')}
 function render(){
-let raw=document.getElementById('search').value.toLowerCase().trim();
-let q=raw.replace(/chahiye|mujhe|mujko|dikhao|dikhaye|chiye|wala|wali|ka|ki|ko|hai|hain|/g,'').trim();
-let sc=smartCat(raw);
-let filtered=data.filter(d=>{
-if(sc && cur=='all') return d.cat==sc || d.name.toLowerCase().includes(q);
-if(cur!='all') return d.cat==cur && (d.name.toLowerCase().includes(q) || sc==cur || q=='' || sc==null && true);
-return d.name.toLowerCase().includes(q) || (sc && d.cat==sc);
-});
-if(sc && q.length<3) filtered=data.filter(d=>d.cat==sc);
-if(raw=='' ) filtered=data.filter(d=>cur=='all'||d.cat==cur);
-document.getElementById('cnt').innerText="Dikh raha hai : "+filtered.length+" Cheezein";
-let html=''; filtered.forEach(d=>{html+=`<div class="card"><img src="${d.img}"><b>${d.name}</b><br><small>${d.price}</small><br><a href="https://wa.me/919528825250?text=Mujhe ${encodeURIComponent(d.name)} chahiye - ${d.price}"><button style="width:100%;background:gold;padding:8px;border:none;border-radius:8px;font-weight:bold">BUY KARO</button></a></div>`;});
-if(!html) html='<p style="color:white">Kuch nahi mila, WhatsApp karo!</p>';
-document.getElementById('list').innerHTML=html;
+let q=document.getElementById('s').value.toLowerCase();
+let list=tools.filter(t=>(cur==="Sab"||t.cat===cur));
+if(q) list=list.filter(t=>t.name.toLowerCase().includes(q)||t.desc.toLowerCase().includes(q));
+document.getElementById('grid').innerHTML=list.map(t=>`<div class="card" onclick="openTool(${t.id})"><div class="ic">${t.icon}</div><h3>${t.name}</h3><p>${t.desc}</p><span class="${t.type==='free'?'free':'prem'}">${t.type==='free'?'FREE':'PREMIUM'}</span></div>`).join('');
 }
-function show(c,btn){cur=c;document.getElementById('search').value='';document.querySelectorAll('.icons button').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');render();window.scrollTo(0,420);}
-function filter(){render();} render();
+function setCat(c){cur=c;renderCats();render();}
+document.getElementById('s').addEventListener('input',render);
+function openTool(id){curT=tools.find(t=>t.id===id);document.getElementById('mt').innerText=curT.name;document.getElementById('md').innerText=curT.desc+" - Hindi + English me!";document.getElementById('mi').value="";document.getElementById('mi2').value="";document.getElementById('mo').style.display="none";document.getElementById('modal').classList.add('open')}
+function closeM(){document.getElementById('modal').classList.remove('open')}
+function gen(){let a=document.getElementById('mi').value||"Azam Bhai";let b=document.getElementById('mi2').value||"";let o=document.getElementById('mo');o.style.display="block";o.innerText=`✨ AI FUTURE Result for: ${a}\n\n1. Best Option:\n"${a} - ${b} - Ye wala sabse best hai!"\n\n2. Dusra Option:\n"🔥 ${a} | AI FUTURE | Agra"\n\n3. Teesra Option:\n"${a} - Viral Style me"\n\n👉 Isko Copy karke use karo!\nFree me Roz 3 baar use karo. Premium ke liye WhatsApp karo!`}
+renderCats();render();
 </script>
 </body>
 </html>
