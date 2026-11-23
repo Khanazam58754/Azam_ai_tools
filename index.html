@@ -1,129 +1,126 @@
 <!DOCTYPE html>
-<html lang="hi">
-<head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI FUTURE - 30 AI Tools Website</title>
+<html lang="hi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI FUTURE - Pro Platform</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:#0a0a1a;color:#fff}
-.top{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;background:#11112e;position:sticky;top:0;z-index:20}
-.logo{font-size:22px;font-weight:900}.logo span{color:#a855f7}
-.pill{background:#a855f7;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:800}
-.hero{padding:22px 16px;background:linear-gradient(135deg,#4c1d95,#7c3aed,#db2777)}
-.hero h1{font-size:28px;line-height:1.2}.hero h1 span{color:#facc15}
-.hero p{margin:10px 0;color:#ddd;font-size:14px;line-height:1.5}
-.search{display:flex;background:#fff;border-radius:50px;padding:4px;margin-top:14px}
-.search input{flex:1;border:none;outline:none;padding:12px 14px;border-radius:50px;font-size:15px;color:#000}
-.search button{background:#7c3aed;color:#fff;border:none;padding:11px 18px;border-radius:50px;font-weight:800}
-.stats{display:flex;gap:10px;margin-top:14px}
-.stat{flex:1;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:12px;text-align:center}
-.stat b{font-size:18px;display:block}.stat span{font-size:11px;opacity:.8}
-.cats{display:flex;gap:8px;overflow:auto;padding:14px;white-space:nowrap}
-.cats button{background:#1e1e3f;border:1px solid #333;padding:9px 15px;border-radius:50px;color:#fff}
-.cats button.active{background:#a855f7;border-color:#a855f7}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding:0 14px 20px}
-.card{background:#161633;border:1px solid #2d2d5a;border-radius:16px;padding:14px;cursor:pointer}
-.card:hover{border-color:#a855f7}
-.card .ic{font-size:28px}.card h3{font-size:14px;margin:7px 0 4px;line-height:1.3}.card p{font-size:11px;color:#aaa;line-height:1.4;min-height:28px}
-.free{background:#22c55e;color:#000;font-size:10px;padding:3px 7px;border-radius:20px;font-weight:800}
-.prem{background:#facc15;color:#000;font-size:10px;padding:3px 7px;border-radius:20px;font-weight:800}
-.quick{background:#1e1e3f;margin:0 14px 14px;border-radius:16px;padding:14px}
-.quick h3{font-size:15px;margin-bottom:10px}
-.qgrid{display:flex;gap:10px}.qgrid div{flex:1;text-align:center;background:#2a2a55;padding:12px 4px;border-radius:12px;font-size:12px}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,Arial,sans-serif}
+body{background:#07070f;color:#fff;display:flex;min-height:100vh}
+.side{width:230px;background:#0d0d1f;border-right:1px solid #222;position:fixed;left:0;top:0;bottom:0;padding:18px 14px;display:none;flex-direction:column;z-index:20}
+@media(min-width:900px){.side{display:flex}.main{margin-left:230px}}
+.logo{font-size:22px;font-weight:900}.logo span{color:#a855f7}.logo small{display:block;font-size:10px;color:#888;font-weight:400;margin-top:2px}
+.side input{width:100%;background:#1a1a33;border:1px solid #2a2a55;color:#fff;padding:10px;border-radius:10px;margin:16px 0;outline:none}
+.menu a{display:flex;gap:10px;padding:10px;border-radius:10px;color:#ccc;text-decoration:none;font-size:14px;cursor:pointer}
+.menu a.active,.menu a:hover{background:#7c3aed;color:#fff}
+.badge{margin-left:auto;background:#a855f7;font-size:10px;padding:2px 7px;border-radius:20px}
+.user{margin-top:auto;display:flex;gap:10px;align-items:center;background:#161633;padding:10px;border-radius:12px}
+.user img{width:36px;height:36px;border-radius:50%;background:#a855f7;display:flex;align-items:center;justify-content:center;font-weight:900}
+.main{flex:1;width:100%}
+.top{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;background:rgba(10,10,25,.9);position:sticky;top:0;z-index:10;border-bottom:1px solid #222}
+.top h2{font-size:18px}.top h2 span{color:#facc15;font-size:13px}
+.btns{display:flex;gap:8px}
+.btn{background:#7c3aed;color:#fff;border:none;padding:9px 14px;border-radius:20px;font-weight:700;cursor:pointer}
+.btn2{background:#1e1e3f;color:#fff;border:1px solid #333;padding:9px 14px;border-radius:20px}
+.hero{margin:16px;background:linear-gradient(135deg,#2e1065,#7c3aed,#db2777);border-radius:20px;padding:20px;position:relative;overflow:hidden}
+.hero h1{font-size:26px;line-height:1.2}.hero p{color:#ddd;font-size:13px;margin:8px 0 14px;line-height:1.5}
+.heroSearch{display:flex;background:#fff;border-radius:50px;padding:4px}
+.heroSearch input{flex:1;border:none;outline:none;padding:11px;border-radius:50px}
+.heroSearch button{background:#111;color:#fff;border:none;padding:10px 16px;border-radius:50px;font-weight:700}
+.stats{display:flex;gap:10px;margin:14px 16px}
+.cardS{flex:1;background:#13132b;border:1px solid #26264a;border-radius:16px;padding:14px}
+.cardS b{font-size:18px}.cardS span{font-size:11px;color:#aaa;display:block;margin-top:3px}.green{color:#22c55e;font-size:11px}
+.quick{margin:0 16px 14px}.quick h3{margin-bottom:10px;font-size:15px}
+.q{display:flex;gap:10px}.q div{flex:1;background:#1a1a33;border:1px solid #2a2a55;padding:14px 6px;border-radius:14px;text-align:center;font-size:12px;cursor:pointer}
+.cats{display:flex;gap:8px;overflow:auto;padding:0 16px 12px;white-space:nowrap}
+.cats button{background:#1a1a33;border:1px solid #333;color:#fff;padding:8px 14px;border-radius:20px}
+.cats button.active{background:#a855f7}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding:0 16px 20px}
+@media(min-width:700px){.grid{grid-template-columns:repeat(3,1fr)}.hero h1{font-size:32px}}
+.tool{background:#12122a;border:1px solid #26264a;border-radius:16px;padding:14px;cursor:pointer}
+.tool:hover{border-color:#a855f7;transform:translateY(-2px)}
+.tool .ic{font-size:28px;width:48px;height:48px;background:#1e1e3f;border-radius:12px;display:flex;align-items:center;justify-content:center}
+.tool h4{font-size:14px;margin:9px 0 4px}.tool p{font-size:11px;color:#999;line-height:1.4;min-height:26px}
+.free{background:#22c55e;color:#000;font-size:10px;padding:3px 8px;border-radius:20px;font-weight:800}
+.prem{background:#facc15;color:#000;font-size:10px;padding:3px 8px;border-radius:20px;font-weight:800}
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:flex-end;justify-content:center;z-index:99}
-.modal.open{display:flex}
-.box{background:#fff;color:#000;width:100%;max-width:600px;border-radius:20px 20px 0 0;padding:20px;max-height:92vh;overflow:auto}
-.box input,.box textarea,.box select{width:100%;padding:12px;border:1px solid #ddd;border-radius:12px;margin:8px 0;font-size:15px}
-.btn{width:100%;background:#7c3aed;color:#fff;border:none;padding:14px;border-radius:12px;font-weight:800;font-size:16px}
-.out{background:#f1f5f9;padding:13px;border-radius:12px;margin-top:12px;white-space:pre-wrap;display:none;font-size:14px;line-height:1.6}
-footer{text-align:center;padding:18px;color:#888;font-size:12px;line-height:1.6}
-</style>
-</head>
-<body>
-<div class="top"><div class="logo">AI <span>FUTURE</span></div><div class="pill">30 TOOLS • FREE + PREMIUM</div></div>
+.modal.open{display:flex}.box{background:#fff;color:#000;width:100%;max-width:520px;border-radius:20px 20px 0 0;padding:20px;max-height:92vh;overflow:auto}
+.box input,.box textarea,.box select{width:100%;padding:12px;border:1px solid #ddd;border-radius:12px;margin:7px 0}
+.go{width:100%;background:#7c3aed;color:#fff;border:none;padding:14px;border-radius:12px;font-weight:800}
+.out{background:#f1f5f9;padding:12px;border-radius:12px;margin-top:12px;display:none;white-space:pre-wrap;line-height:1.6}
+.mobMenu{position:fixed;bottom:0;left:0;right:0;background:#0d0d1f;border-top:1px solid #222;display:flex;justify-content:space-around;padding:10px;z-index:20}
+@media(min-width:900px){.mobMenu{display:none}}
+.mobMenu div{text-align:center;font-size:11px;cursor:pointer}
+</style></head><body>
+<div class="side"><div class="logo">AI <span>FUTURE</span><small>30 AI Tools Platform</small></div>
+<input placeholder="🔍 Search tools..."><div class="menu">
+<a class="active">🏠 Dashboard</a><a onclick="setCat('Image')">🖼️ Image Generator <span class="badge">6</span></a>
+<a onclick="setCat('Video')">🎬 Video Tools</a><a onclick="setCat('Audio')">🎵 Audio Tools</a>
+<a onclick="setCat('Writing')">✍️ Writing</a><a onclick="setCat('Study')">📚 Study</a>
+<a onclick="setCat('Business')">💼 Business</a><a>⭐ Premium</a><a>⚙️ Settings</a></div>
+<div class="user"><div>AZ</div><div><b style="font-size:13px">Azam Bhai</b><br><span style="font-size:11px;color:#aaa">Free Plan • 9,969 Token</span></div></div></div>
 
-<div class="hero">
-<h1>Welcome back, Azam Bhai 👋<br><span>AI FUTURE - 30 AI Tools</span></h1>
-<p>Aapke liye 30 Powerful AI Tools - Jo aaj bhi kaam aayenge aur aane wali Generation me bhi! Hindi + English me!</p>
-<div class="search"><input id="s" placeholder="Search karo - Photo, Video, Resume..."><button onclick="render()">Search</button></div>
-<div class="stats">
-<div class="stat"><b>9,969</b><span>Token Balance</span></div>
-<div class="stat"><b>101</b><span>Ready to Use</span></div>
-<div class="stat"><b>30</b><span>AI Tools</span></div>
-</div>
-</div>
+<div class="main">
+<div class="top"><div><h2>Welcome back, Azam Bhai 👋 <span>★ Premium</span></h2><p style="font-size:12px;color:#aaa">Your AI-powered workspace with 30 tools ready</p></div>
+<div class="btns"><button class="btn2" onclick="toggleLang()">Hindi / English</button><button class="btn" onclick="openLogin()">Login</button></div></div>
 
-<div class="quick"><h3>⚡ Quick Actions - Jaldi Use Karo</h3><div class="qgrid">
-<div onclick="openTool(1)">🖼️<br>AI Chat</div>
-<div onclick="openTool(2)">✍️<br>Content Writer</div>
-<div onclick="openTool(7)">💻<br>Code Generator</div>
-<div onclick="openTool(18)">🌐<br>Translator</div>
-</div></div>
+<div class="hero"><h1>AI FUTURE - 30 AI Tools<br>Ek hi Platform pe!</h1><p>Photo, Video, Music, Resume, Business - Sab kuch ek hi jagah. Hindi + English me!</p>
+<div class="heroSearch"><input id="s" placeholder="Search karo - Photo, Video, Resume..."><button onclick="render()">Search</button></div></div>
 
-<div class="cats" id="cats"></div>
-<div class="grid" id="grid"></div>
+<div class="stats"><div class="cardS"><b>9,969</b><span>Token Balance</span><div class="green">▲ +12% last week</div></div>
+<div class="cardS"><b>30</b><span>AI Tools Ready</span><div class="green">▲ All Active</div></div>
+<div class="cardS"><b>101</b><span>Ready to Use</span><div class="green">▲ New Added</div></div></div>
 
-<div class="modal" id="modal"><div class="box">
-<span style="float:right;font-size:22px;cursor:pointer" onclick="closeM()">✕</span>
-<h2 id="mt">Tool</h2><p id="md" style="color:#666;font-size:13px"></p>
-<input id="mi" placeholder="Apna Naam / Topic likho...">
-<textarea id="mi2" placeholder="Detail likho..."></textarea>
-<select id="lang"><option>Hindi + English</option><option>Hindi Only</option><option>English Only</option></select>
-<button class="btn" onclick="gen()">✨ AI Se Banao →</button>
-<div class="out" id="mo"></div>
-<p style="text-align:center;font-size:11px;color:#888;margin-top:10px">AI FUTURE • Free 3 Use Roz • Premium ke liye WhatsApp karo</p>
-</div></div>
+<div class="quick"><h3>⚡ Quick Actions</h3><div class="q"><div onclick="openTool(1)">💬<br>AI Chat</div><div onclick="openTool(20)">✍️<br>Content Writer</div><div onclick="openTool(26)">💻<br>Code Generator</div><div onclick="openTool(23)">🌐<br>Translator</div></div></div>
 
-<footer><b style="color:#fff">AI FUTURE - 30 AI Tools Website</b><br>Made by Azam Bhai • Agra, Uttar Pradesh<br>Free + Premium • Hindi + English</footer>
+<div class="cats" id="cats"></div><div class="grid" id="grid"></div>
+<p style="text-align:center;color:#666;font-size:12px;padding:0 0 80px">AI FUTURE • Made by Azam Bhai • Agra • Free + Premium • Hindi + English</p></div>
+
+<div class="mobMenu"><div onclick="window.scrollTo(0,0)">🏠<br>Home</div><div onclick="openTool(1)">✨<br>Tools</div><div onclick="openLogin()">👤<br>Login</div><div onclick="toggleLang()">🌐<br>Language</div></div>
+
+<div class="modal" id="modal"><div class="box"><span style="float:right;font-size:22px;cursor:pointer" onclick="closeM()">✕</span>
+<h2 id="mt">Tool</h2><p id="md" style="color:#666;font-size:13px"></p><input id="mi" placeholder="Apna Naam / Topic likho..."><textarea id="mi2" placeholder="Detail likho..."></textarea><button class="go" onclick="gen()">✨ AI Se Banao →</button><div class="out" id="mo"></div><p style="text-align:center;font-size:11px;color:#888;margin-top:10px">Free me Roz 3 baar • Premium 99 Rs / Mahina</p></div></div>
+
+<div class="modal" id="loginModal"><div class="box"><span style="float:right;font-size:22px;cursor:pointer" onclick="document.getElementById('loginModal').classList.remove('open')">✕</span>
+<h2>Login / Register</h2><p style="color:#666;font-size:13px">AI FUTURE me Login karo - Token pao!</p><input placeholder="Apna Naam"><input placeholder="Mobile / Email"><input placeholder="Password" type="password"><button class="go" onclick="alert('Login Ho Gaya Bhai! Welcome to AI FUTURE');document.getElementById('loginModal').classList.remove('open')">Login / Register →</button></div></div>
 
 <script>
 const tools=[
 {id:1,icon:"🖼️",name:"1. AI Image Generator",desc:"Likho aur AI Photo bana dega",cat:"Image",type:"free"},
-{id:2,icon:"✨",name:"2. AI Photo Editor",desc:"Photo ko HD, Saaf, Sundar karo",cat:"Image",type:"free"},
+{id:2,icon:"✨",name:"2. AI Photo Editor",desc:"Photo ko HD, Saaf karo",cat:"Image",type:"free"},
 {id:3,icon:"✂️",name:"3. AI Background Remover",desc:"Background 1 Sec me hatao",cat:"Image",type:"free"},
-{id:4,icon:"🎨",name:"4. AI Logo Maker",desc:"Dukaan / Channel ka Logo",cat:"Image",type:"free"},
-{id:5,icon:"📢",name:"5. AI Poster Maker",desc:"Offer / Sale Poster banao",cat:"Image",type:"free"},
+{id:4,icon:"🎨",name:"4. AI Logo Maker",desc:"Dukaan ka Logo",cat:"Image",type:"free"},
+{id:5,icon:"📢",name:"5. AI Poster Maker",desc:"Offer Poster banao",cat:"Image",type:"free"},
 {id:6,icon:"🔥",name:"6. AI Thumbnail Maker",desc:"YouTube Viral Thumbnail",cat:"Image",type:"prem"},
-{id:7,icon:"🎬",name:"7. Text to Video",desc:"Likha hua se Video banao",cat:"Video",type:"prem"},
+{id:7,icon:"🎬",name:"7. Text to Video",desc:"Likhe se Video banao",cat:"Video",type:"prem"},
 {id:8,icon:"📸",name:"8. Image to Video",desc:"Photo se Bolta Video",cat:"Video",type:"prem"},
 {id:9,icon:"🐻",name:"9. AI Cartoon Video Maker",desc:"Cartoon Video banao",cat:"Video",type:"free"},
-{id:10,icon:"🎞️",name:"10. AI Animation Maker",desc:"Animation Video banao",cat:"Video",type:"prem"},
-{id:11,icon:"✂️",name:"11. AI Video Editor",desc:"Video kaat, jodo, saaf karo",cat:"Video",type:"free"},
+{id:10,icon:"🎞️",name:"10. AI Animation Maker",desc:"Animation Video",cat:"Video",type:"prem"},
+{id:11,icon:"✂️",name:"11. AI Video Editor",desc:"Video kaat, jodo",cat:"Video",type:"free"},
 {id:12,icon:"📱",name:"12. AI Shorts Maker",desc:"Reels / Shorts banao",cat:"Video",type:"free"},
-{id:13,icon:"🔊",name:"13. Text to Speech",desc:"Likha hua ko bol ke sunao",cat:"Audio",type:"free"},
-{id:14,icon:"🎵",name:"14. AI Music Generator",desc:"Apne Naam pe Gaana banao",cat:"Audio",type:"prem"},
-{id:15,icon:"🎙️",name:"15. AI Voice Creator",desc:"Apni Awaaz badlo, nayi banao",cat:"Audio",type:"free"},
+{id:13,icon:"🔊",name:"13. Text to Speech",desc:"Likhe ko bol ke sunao",cat:"Audio",type:"free"},
+{id:14,icon:"🎵",name:"14. AI Music Generator",desc:"Apne Naam pe Gaana",cat:"Audio",type:"prem"},
+{id:15,icon:"🎙️",name:"15. AI Voice Creator",desc:"Awaaz badlo",cat:"Audio",type:"free"},
 {id:16,icon:"🧹",name:"16. AI Audio Cleaner",desc:"Awaaz se Shor hatao",cat:"Audio",type:"free"},
-{id:17,icon:"🏷️",name:"17. AI Title Generator",desc:"Viral Title + Tags banao",cat:"Writing",type:"free"},
-{id:18,icon:"✍️",name:"18. AI Writing & Education",desc:"Essay, Story, Blog likho",cat:"Writing",type:"free"},
-{id:19,icon:"📖",name:"19. AI Story Writer",desc:"Kahani, Kissa likh dega",cat:"Writing",type:"free"},
-{id:20,icon:"📝",name:"20. AI Blog Writer",desc:"Blog, Article likh dega",cat:"Writing",type:"free"},
-{id:21,icon:"📄",name:"21. AI Resume Maker",desc:"Job ke liye CV banao",cat:"Job",type:"free"},
+{id:17,icon:"🏷️",name:"17. AI Title Generator",desc:"Viral Title + Tags",cat:"Writing",type:"free"},
+{id:18,icon:"✍️",name:"18. AI Writing & Education",desc:"Essay, Story, Blog",cat:"Writing",type:"free"},
+{id:19,icon:"📖",name:"19. AI Story Writer",desc:"Kahani likh dega",cat:"Writing",type:"free"},
+{id:20,icon:"📝",name:"20. AI Blog Writer",desc:"Blog, Article",cat:"Writing",type:"free"},
+{id:21,icon:"📄",name:"21. AI Resume Maker",desc:"Job ke liye CV",cat:"Job",type:"free"},
 {id:22,icon:"📚",name:"22. AI Homework Helper",desc:"Sawal likho, Jawab pao",cat:"Study",type:"free"},
-{id:23,icon:"🌐",name:"23. AI Translator",desc:"Hindi ↔ English Translator",cat:"Study",type:"free"},
-{id:24,icon:"📑",name:"24. AI PDF Summarizer",desc:"Lambi PDF ka chhota Saar",cat:"Study",type:"prem"},
+{id:23,icon:"🌐",name:"23. AI Translator",desc:"Hindi ↔ English",cat:"Study",type:"free"},
+{id:24,icon:"📑",name:"24. AI PDF Summarizer",desc:"PDF ka chhota Saar",cat:"Study",type:"prem"},
 {id:25,icon:"💼",name:"25. AI Business Plan Maker",desc:"Business ka pura Plan",cat:"Business",type:"prem"},
-{id:26,icon:"🌐",name:"26. AI Website Builder",desc:"Bol ke Website banvao",cat:"Business",type:"prem"},
-{id:27,icon:"💡",name:"27. AI App Idea Generator",desc:"Naya App / Business Idea",cat:"Business",type:"free"},
-{id:28,icon:"📊",name:"28. AI Business Plan Maker",desc:"5000 me kaunsa Business?",cat:"Business",type:"free"},
-{id:29,icon:"📣",name:"29. AI Marketing Assistant",desc:"Customer ke liye Ad, Post",cat:"Business",type:"free"},
-{id:30,icon:"🤖",name:"30. AI Personal Assistant",desc:"Kuch bhi pucho, AI jawab dega",cat:"Assistant",type:"free"},
-];
-let cur="Sab"; let curT=null;
-const cats=["Sab","Image","Video","Audio","Writing","Study","Job","Business","Assistant"];
+{id:26,icon:"🌐",name:"26. AI Website Builder",desc:"Bol ke Website",cat:"Business",type:"prem"},
+{id:27,icon:"💡",name:"27. AI App Idea Generator",desc:"Naya App Idea",cat:"Business",type:"free"},
+{id:28,icon:"📊",name:"28. AI Business Plan Maker",desc:"5000 me Business?",cat:"Business",type:"free"},
+{id:29,icon:"📣",name:"29. AI Marketing Assistant",desc:"Ad, Post banao",cat:"Business",type:"free"},
+{id:30,icon:"🤖",name:"30. AI Personal Assistant",desc:"Kuch bhi pucho",cat:"Assistant",type:"free"}];
+let cur="Sab";let curT=null;const cats=["Sab","Image","Video","Audio","Writing","Study","Job","Business","Assistant"];
 function renderCats(){document.getElementById('cats').innerHTML=cats.map(c=>`<button class="${c===cur?'active':''}" onclick="setCat('${c}')">${c}</button>`).join('')}
-function render(){
-let q=document.getElementById('s').value.toLowerCase();
-let list=tools.filter(t=>(cur==="Sab"||t.cat===cur));
-if(q) list=list.filter(t=>t.name.toLowerCase().includes(q)||t.desc.toLowerCase().includes(q));
-document.getElementById('grid').innerHTML=list.map(t=>`<div class="card" onclick="openTool(${t.id})"><div class="ic">${t.icon}</div><h3>${t.name}</h3><p>${t.desc}</p><span class="${t.type==='free'?'free':'prem'}">${t.type==='free'?'FREE':'PREMIUM'}</span></div>`).join('');
-}
-function setCat(c){cur=c;renderCats();render();}
-document.getElementById('s').addEventListener('input',render);
-function openTool(id){curT=tools.find(t=>t.id===id);document.getElementById('mt').innerText=curT.name;document.getElementById('md').innerText=curT.desc+" - Hindi + English me!";document.getElementById('mi').value="";document.getElementById('mi2').value="";document.getElementById('mo').style.display="none";document.getElementById('modal').classList.add('open')}
+function render(){let q=document.getElementById('s').value.toLowerCase();let list=tools.filter(t=>(cur==="Sab"||t.cat===cur));if(q)list=list.filter(t=>t.name.toLowerCase().includes(q));document.getElementById('grid').innerHTML=list.map(t=>`<div class="tool" onclick="openTool(${t.id})"><div class="ic">${t.icon}</div><h4>${t.name}</h4><p>${t.desc}</p><span class="${t.type==='free'?'free':'prem'}">${t.type==='free'?'FREE':'PREMIUM'}</span></div>`).join('')}
+function setCat(c){cur=c;renderCats();render()}
+function openTool(id){curT=tools.find(t=>t.id===id);document.getElementById('mt').innerText=curT.name;document.getElementById('md').innerText=curT.desc;document.getElementById('mi').value="";document.getElementById('mi2').value="";document.getElementById('mo').style.display="none";document.getElementById('modal').classList.add('open')}
 function closeM(){document.getElementById('modal').classList.remove('open')}
-function gen(){let a=document.getElementById('mi').value||"Azam Bhai";let b=document.getElementById('mi2').value||"";let o=document.getElementById('mo');o.style.display="block";o.innerText=`✨ AI FUTURE Result for: ${a}\n\n1. Best Option:\n"${a} - ${b} - Ye wala sabse best hai!"\n\n2. Dusra Option:\n"🔥 ${a} | AI FUTURE | Agra"\n\n3. Teesra Option:\n"${a} - Viral Style me"\n\n👉 Isko Copy karke use karo!\nFree me Roz 3 baar use karo. Premium ke liye WhatsApp karo!`}
-renderCats();render();
-</script>
-</body>
-</html>
+function openLogin(){document.getElementById('loginModal').classList.add('open')}
+function toggleLang(){alert('Language Change Ho Gayi - Hindi / English')}
+function gen(){let a=document.getElementById('mi').value||"Azam Bhai";let b=document.getElementById('mi2').value||"";let o=document.getElementById('mo');o.style.display="block";o.innerText=`✨ AI FUTURE Result for: ${a}\n\n1. Best: "${a} - ${b} - Ye wala sabse best hai!"\n2. Viral: "🔥 ${a} | AI FUTURE | Agra"\n3. Simple: "${a} - Premium Style"\n\n👉 Copy karke use karo!`}
+document.getElementById('s').addEventListener('input',render);renderCats();render();
+</script></body></html>
