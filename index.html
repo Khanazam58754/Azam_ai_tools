@@ -30,6 +30,12 @@ footer{text-align:center;padding:25px;color:#8e86a8;font-size:12px;border-top:1p
 .overlay{display:none;position:fixed;inset:0;background:#080611d9;z-index:10;padding:18px;align-items:center;justify-content:center}.overlay.show{display:flex}.modal{width:min(560px,100%);max-height:90vh;overflow:auto;background:#1c1731;border:1px solid #574477;border-radius:20px;padding:20px;box-shadow:0 20px 80px #0009}.modalhead{display:flex;justify-content:space-between;gap:12px;align-items:center}.modal h2{margin:0;font-size:22px}.close{font-size:22px;padding:3px 10px}.modal label{display:block;margin:16px 0 7px;color:#d9d0eb;font-size:13px}.modal textarea,.modal input{width:100%;background:#100d20;border:1px solid var(--line);border-radius:12px;padding:12px;color:white;min-height:105px}.modal input{min-height:0}.notice{background:#30234b;border-radius:12px;padding:12px;color:#d8c9f4;font-size:12px;line-height:1.5;margin-top:13px}.result{display:none;margin-top:13px;padding:13px;border:1px solid #387c68;background:#16352f;border-radius:12px;color:#c8ffea;font-size:13px}
 @media(max-width:760px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{padding-top:34px}.nav{padding:12px}.brand{font-size:19px}}
 @media(max-width:430px){.grid{grid-template-columns:1fr}.navright .optional{display:none}.tool{padding:15px}.stats{gap:13px}}
+
+.assistantBubble{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(120deg,#30224d,#241b3c);border:1px solid #574477;border-radius:15px;padding:13px;margin:17px 0}
+.assistantAvatar{width:38px;height:38px;flex:none;border-radius:13px;background:linear-gradient(135deg,#9b6cff,#d66bff);display:grid;place-items:center;font-size:20px}
+.assistantBubble b{font-size:13px;color:#e8d9ff}.assistantBubble p{font-size:13px;line-height:1.5;color:#d1c6e5;margin:4px 0 0}
+.quickTitle{font-size:12px;color:#b9b0d0;margin:15px 0 8px}.quickChips{display:flex;gap:7px;flex-wrap:wrap}.quickChip{background:#2b2244;border:1px solid #51416f;color:#e4d7ff;border-radius:30px;padding:7px 10px;font-size:11px}
+.fieldHint{font-size:11px;color:#9388ad;margin:5px 0 0}
 </style>
 </head>
 <body>
@@ -51,7 +57,12 @@ footer{text-align:center;padding:25px;color:#8e86a8;font-size:12px;border-top:1p
 <section class="info" id="about"><h2 id="aboutTitle">Free for everyone</h2><p id="aboutText">AI FUTURE is a public-facing prototype. Tool cards, search, categories and sample workspaces are interactive. Real AI generation is not connected yet; it requires secure server-side integrations and may have usage costs. Never put private API keys in this public HTML file.</p></section>
 </main>
 <footer>© 2026 AI FUTURE · Made for everyone · Free public access</footer>
-<div class="overlay" id="overlay" onclick="if(event.target===this)closeModal()"><div class="modal"><div class="modalhead"><h2 id="modalTitle">Tool workspace</h2><button class="btn close" onclick="closeModal()">×</button></div><p id="modalDesc" style="color:#b9b0d0;font-size:13px"></p><label id="promptLabel" for="prompt">Describe what you want</label><textarea id="prompt" placeholder="Write your idea here..."></textarea><button class="btn primary" style="margin-top:12px;width:100%" onclick="tryDemo()" id="tryBtn">Try sample demo</button><div class="result" id="result"></div><div class="notice" id="modalNotice">Demo mode: this sample does not call an AI service or upload your text.</div></div></div>
+<div class="overlay" id="overlay" onclick="if(event.target===this)closeModal()"><div class="modal"><div class="modalhead"><div><div class="eyebrow" style="font-size:10px;letter-spacing:1px">YOUR PERSONAL AI ASSISTANT</div><h2 id="modalTitle">Tool workspace</h2></div><button class="btn close" onclick="closeModal()">×</button></div>
+<div class="assistantBubble"><div class="assistantAvatar" id="assistantAvatar">✦</div><div><b id="assistantName">AI Assistant</b><p id="assistantWelcome">Welcome! Tell me what you want to create.</p></div></div>
+<div id="toolFields"></div>
+<div class="quickTitle" id="quickTitle">Try an example</div><div class="quickChips" id="quickChips"></div>
+<label id="promptLabel" for="prompt">Your details</label><textarea id="prompt" placeholder="Write your idea here..."></textarea>
+<button class="btn primary" style="margin-top:12px;width:100%" onclick="tryDemo()" id="tryBtn">Start creating ✨</button><div class="result" id="result"></div><div class="notice" id="modalNotice">Demo mode: sample workspace only. Live AI needs a secure backend connection.</div></div></div>
 <script>
 const tools=[
 ["AI Image Generator","Image","🎨","Create an image from a written idea."],["AI Photo Editor","Image","🖼️","Plan edits and improvements for a photo."],["Background Remover","Image","✂️","Prepare a background-removal request."],["AI Logo Maker","Image","🔷","Explore logo concepts for a brand."],["AI Poster Maker","Image","🪧","Draft a poster concept and message."],["AI Thumbnail Maker","Image","▶️","Plan an engaging video thumbnail."],
@@ -65,9 +76,69 @@ let active="All",selected=null,hi=false;
 const hiNames={"Image":"इमेज","Video":"वीडियो","Audio":"ऑडियो","Writing":"लेखन","Business":"बिज़नेस","All":"सभी"};
 function renderFilters(){document.getElementById("filters").innerHTML=categories.map(c=>`<button class="filter ${active===c?'active':''}" onclick="active='${c}';renderFilters();renderTools()">${hi?(hiNames[c]||c):c}</button>`).join("")}
 function renderTools(){let q=document.getElementById("search").value.toLowerCase();let found=tools.filter(t=>(active==="All"||t[1]===active)&&(t[0]+" "+t[1]+" "+t[3]).toLowerCase().includes(q));document.getElementById("toolGrid").innerHTML=found.map((t)=>`<button class="tool" onclick="openTool(${tools.indexOf(t)})"><div class="tooltop"><span class="emoji">${t[2]}</span><span class="pill">${hi?(hiNames[t[1]]||t[1]):t[1]}</span></div><h3>${t[0]}</h3><p>${t[3]}</p><span class="launch">${hi?"खोलें →":"Open tool →"}</span></button>`).join("")||`<p style="color:#b9b0d0">No tools found. Try another search.</p>`;document.getElementById("count").textContent=hi?`कुल ${found.length} टूल दिखाए जा रहे हैं`:`Showing ${found.length} of 30 tools`}
-function openTool(i){selected=tools[i];document.getElementById("modalTitle").textContent=selected[2]+" "+selected[0];document.getElementById("modalDesc").textContent=selected[3];document.getElementById("overlay").classList.add("show");document.getElementById("result").style.display="none";document.getElementById("prompt").value=""}
+const assistantProfiles={
+"AI Image Generator":["Image Artist","मैं आपकी कल्पना को एक शानदार इमेज प्रॉम्प्ट में बदलने में मदद करूँगा।","तस्वीर में क्या दिखना चाहिए? विषय, जगह, रंग और स्टाइल बताइए।","जैसे: बारिश में चमकता भविष्य का शहर","सिनेमैटिक पोर्ट्रेट|3D कार्टून|प्रकृति का दृश्य"],
+"AI Photo Editor":["Photo Studio","बताइए फोटो में क्या बदलाव चाहिए। मूल फोटो की पहचान और जरूरी चीजें सुरक्षित रखने की बात भी लिखें।","फोटो में कौन-से बदलाव करने हैं?","जैसे: रोशनी सुधारें और बैकग्राउंड साफ रखें","लाइटिंग सुधारें|रंग बेहतर करें|पुरानी फोटो साफ करें"],
+"Background Remover":["Background Studio","मैं आपको साफ कटआउट के लिए निर्देश बनाने में मदद करूँगा।","किस चीज़ का बैकग्राउंड हटाना है और नया बैकग्राउंड कैसा हो?","जैसे: प्रोडक्ट की फोटो, सफेद बैकग्राउंड","सफेद बैकग्राउंड|पारदर्शी बैकग्राउंड|सॉफ्ट स्टूडियो"],
+"AI Logo Maker":["Brand Designer","आपके ब्रांड की पहचान के लिए लोगो का कॉन्सेप्ट बनाते हैं।","ब्रांड का नाम, काम और पसंदीदा रंग बताइए।","जैसे: कपड़ों के ब्रांड के लिए आधुनिक लोगो","मिनिमल|लक्ज़री|मॉडर्न"],
+"AI Poster Maker":["Poster Designer","चलो एक आकर्षक पोस्टर का आइडिया तैयार करते हैं।","पोस्टर किस कार्यक्रम, ऑफर या विषय के लिए है?","जैसे: नए कैफे की ओपनिंग","बिजनेस प्रमोशन|इवेंट|एजुकेशन"],
+"AI Thumbnail Maker":["Thumbnail Coach","वीडियो के विषय के अनुसार थंबनेल कॉन्सेप्ट बनाते हैं।","वीडियो का टाइटल और मुख्य विषय लिखिए।","जैसे: 5 शानदार AI वेबसाइट्स","YouTube|Gaming|Education"],
+"Text to Video":["Video Director","मैं आपकी लिखी कहानी को वीडियो सीन में व्यवस्थित करने में मदद करूँगा।","वीडियो का विषय, अवधि और भाषा बताइए।","जैसे: 30 सेकंड की हिंदी जादुई कहानी","30 सेकंड|1 मिनट|सिनेमैटिक"],
+"Image to Video":["Motion Director","तस्वीर में किस तरह की हलचल चाहिए, बताइए।","तस्वीर में क्या स्थिर रहे और क्या मूव करे?","जैसे: कैमरा धीरे-धीरे आगे बढ़े, पेड़ हिलें","धीमा कैमरा मूव|हल्की हवा|सिनेमैटिक ज़ूम"],
+"AI Cartoon Video":["Cartoon Studio","कार्टून की दुनिया बनाते हैं! किरदार और कहानी बताइए।","किरदारों के नाम, उम्र के अनुरूप कहानी और सीन बताइए।","जैसे: दो दोस्तों की मजेदार हिंदी कहानी","कॉमेडी|मैजिक|एडवेंचर"],
+"AI Animation Maker":["Animation Director","एनीमेशन के किरदार, मूवमेंट और सीन प्लान करते हैं।","किस चीज़ का एनीमेशन बनाना है?","जैसे: उड़ता हुआ छोटा रोबोट","2D Animation|3D Animation|Motion Graphics"],
+"AI Video Editor":["Editing Assistant","वीडियो की एडिटिंग का साफ प्लान बनाते हैं।","वीडियो की लंबाई और किस तरह की एडिटिंग चाहिए?","जैसे: कट्स, टाइटल और हल्का बैकग्राउंड म्यूजिक","Reels Edit|Vlog Edit|Cinematic"],
+"AI Shorts Maker":["Shorts Coach","छोटी वीडियो के लिए हुक, सीन और कैप्शन तैयार करते हैं।","वीडियो का विषय और लक्षित दर्शक बताइए।","जैसे: 20 सेकंड का मजेदार फैक्ट","Hook|Scene plan|Caption"],
+"Text to Speech":["Voice Reader","टेक्स्ट को बोलने योग्य बनाने में मदद करूँगा।","टेक्स्ट और आवाज़ की भाषा/स्टाइल बताइए।","जैसे: शांत हिंदी महिला वॉइस","Hindi|English|धीमी आवाज़"],
+"AI Voice Generator":["Voice Studio","वॉइसओवर का अंदाज़ चुनते हैं।","किस तरह की आवाज़ और किस काम के लिए चाहिए?","जैसे: दोस्ताना हिंदी नैरेशन","Friendly|Professional|Storytelling"],
+"AI Music Creator":["Music Composer","एक मौलिक संगीत आइडिया तैयार करते हैं।","मूड, शैली, गति और इस्तेमाल बताइए।","जैसे: प्रेरणादायक इंस्ट्रूमेंटल धुन","Happy|Calm|Adventure"],
+"Audio Cleaner":["Audio Engineer","ऑडियो को साफ करने के लिए आपकी जरूरत समझते हैं।","रिकॉर्डिंग में कौन-सी समस्या है?","जैसे: पंखे का शोर कम करना","Noise|Echo|Volume"],
+"Subtitle Generator":["Subtitle Assistant","सबटाइटल बनाने के लिए ट्रांसक्रिप्ट या संवाद दें।","भाषा और संवाद/ट्रांसक्रिप्ट पेस्ट करें।","जैसे: हिंदी संवाद को अंग्रेज़ी सबटाइटल में","Hindi subtitles|English subtitles|SRT"],
+"AI Story Writer":["Story Writer","चलो आपकी कल्पना से एक दिलचस्प कहानी बनाते हैं।","किरदार, जगह, कहानी का प्रकार और कितनी लंबी कहानी चाहिए?","जैसे: जंगल में दो दोस्तों का रोमांच","जादुई कहानी|कॉमेडी|एडवेंचर"],
+"AI Blog Writer":["Blog Editor","आपके विषय पर व्यवस्थित और उपयोगी ब्लॉग तैयार करने में मदद करूँगा।","विषय, पाठक और ब्लॉग की लंबाई बताइए।","जैसे: शुरुआती लोगों के लिए ऑनलाइन बिजनेस","How-to|Informative|Listicle"],
+"AI Resume Maker":["Career Assistant","आपकी असली जानकारी से साफ और प्रोफेशनल रिज्यूमे बनाते हैं।","शिक्षा, कौशल, अनुभव और नौकरी का लक्ष्य लिखें। कोई जानकारी गढ़ी नहीं जाएगी।","जैसे: B.Com छात्र, MS Excel, Fresher","Fresher Resume|Student Resume|Simple English"],
+"AI Translator":["Language Partner","मैं अनुवाद में मदद करूँगा और मूल अर्थ बनाए रखूँगा।","टेक्स्ट पेस्ट करें और बताएं किस भाषा से किस भाषा में करना है।","जैसे: Hindi to English","Hindi → English|English → Hindi|Urdu → Hindi"],
+"AI Homework Helper":["Study Coach","मैं आपको विषय समझने और कदम-दर-कदम सीखने में मदद करूँगा।","प्रश्न या विषय लिखें और बताएं कहाँ अटक रहे हैं।","जैसे: भिन्न का जोड़ समझाइए","Maths|Science|English"],
+"PDF Summarizer":["Document Reader","PDF का टेक्स्ट यहाँ पेस्ट करें; मैं मुख्य बातें संक्षेप में समझाऊँगा।","PDF से कॉपी किया हुआ टेक्स्ट पेस्ट करें और सारांश की लंबाई बताएं।","जैसे: इस अध्याय का 5 बिंदुओं में सारांश","Short summary|Detailed summary|Key points"],
+"AI Website Builder":["Web Architect","आपकी वेबसाइट का उद्देश्य और पेज प्लान करते हैं।","वेबसाइट किस काम के लिए है और उसमें कौन-से पेज चाहिए?","जैसे: छोटे बिजनेस की वेबसाइट","Portfolio|Business|Online store"],
+"AI App Idea Generator":["Product Thinker","एक उपयोगी ऐप आइडिया और उसके फीचर्स सोचते हैं।","ऐप किस समस्या को हल करेगा और किसके लिए है?","जैसे: छात्रों के लिए पढ़ाई प्लानर","Education|Business|Lifestyle"],
+"AI Business Plan Maker":["Business Planner","आपके बिजनेस आइडिया को चरणों में व्यवस्थित करते हैं।","बिजनेस का आइडिया, ग्राहक और उपलब्ध बजट बताइए।","जैसे: लोकल ऑनलाइन स्टोर","Startup|Small business|Online service"],
+"AI Marketing Assistant":["Marketing Coach","आपके उत्पाद/सेवा के लिए मार्केटिंग प्लान बनाते हैं।","क्या प्रमोट करना है, किस ग्राहक तक पहुँचना है?","जैसे: नए कपड़ों के ब्रांड का लॉन्च","Social media|Content plan|Campaign"],
+"AI Presentation Maker":["Presentation Designer","प्रेजेंटेशन की स्लाइड्स और कहानी व्यवस्थित करते हैं।","विषय, दर्शक और कितनी स्लाइड चाहिए?","जैसे: स्कूल में सौर ऊर्जा पर 8 स्लाइड","School|Business|Pitch deck"],
+"AI Coding Assistant":["Coding Guide","कोड समझने, योजना बनाने और त्रुटि सुलझाने में मदद करूँगा।","कौन-सी भाषा/टेक्नोलॉजी और क्या बनाना चाहते हैं?","जैसे: HTML में संपर्क फॉर्म","HTML/CSS|JavaScript|Python"],
+"AI Personal Assistant":["Daily Assistant","आपके कामों को व्यवस्थित करने में मदद करूँगा।","आज के काम और प्राथमिकताएँ बताइए।","जैसे: पढ़ाई, प्रोजेक्ट और आराम का शेड्यूल","Daily plan|To-do list|Ideas"]
+};
+function openTool(i){
+ selected=tools[i];const p=assistantProfiles[selected[0]]||["AI Assistant","मैं आपकी मदद के लिए तैयार हूँ।","अपनी जरूरत बताइए।","अपना आइडिया लिखें","शुरुआत करें"];
+ document.getElementById("modalTitle").textContent=selected[2]+" "+selected[0];
+ document.getElementById("modalDesc").textContent=selected[3];
+ document.getElementById("assistantName").textContent=p[0];
+ document.getElementById("assistantWelcome").textContent=hi?"नमस्ते! "+p[1]:p[1];
+ document.getElementById("promptLabel").textContent=hi?"अपनी जानकारी लिखें":p[2];
+ document.getElementById("prompt").placeholder=hi?"यहाँ अपनी जानकारी लिखें...":p[3];
+ document.getElementById("quickTitle").textContent=hi?"उदाहरण चुनें":"Try a quick example";
+ document.getElementById("quickChips").innerHTML=p[4].split("|").map(x=>`<button class="quickChip" onclick="useExample('${x.replace(/'/g,"")}')">${x}</button>`).join("");
+ document.getElementById("tryBtn").textContent=hi?"शुरू करें ✨":"Start creating ✨";
+ document.getElementById("modalNotice").textContent=hi?"डेमो मोड: असली AI परिणाम के लिए सुरक्षित AI कनेक्शन जरूरी है।":"Demo mode: live AI output requires a secure AI connection.";
+ document.getElementById("overlay").classList.add("show");
+ document.getElementById("result").style.display="none";document.getElementById("prompt").value="";
+}
+function useExample(x){const a=document.getElementById("prompt");a.value=(a.value?a.value+"; ":"")+x;a.focus()}
 function closeModal(){document.getElementById("overlay").classList.remove("show")}
-function tryDemo(){let v=document.getElementById("prompt").value.trim();let r=document.getElementById("result");if(!v){r.textContent=hi?"पहले अपना आइडिया लिखें।":"Please enter your idea first.";r.style.display="block";return}r.textContent=(hi?"डेमो अनुरोध तैयार है: ":"Demo request prepared: ")+v+" — "+(hi?"यह नमूना है, असली AI परिणाम नहीं।":"This is a sample only, not a real AI result.");r.style.display="block"}
+async function tryDemo(){
+ let v=document.getElementById("prompt").value.trim(),r=document.getElementById("result");
+ if(!v){r.textContent=hi?"पहले अपनी जानकारी लिखें।":"Please enter your details first.";r.style.display="block";return}
+ r.style.display="block";r.textContent=hi?"आपकी रिक्वेस्ट तैयार हो रही है...":"Preparing your request...";
+ const live=["AI Story Writer","AI Blog Writer","AI Resume Maker","AI Translator","AI Homework Helper","PDF Summarizer"];
+ if(live.includes(selected[0])){
+  try{
+   const response=await fetch("/api/ai",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({tool:selected[0],prompt:v,language:hi?"Hindi":"English"})});
+   const data=await response.json();if(!response.ok)throw new Error(data.error||"AI service is not configured");
+   r.textContent=data.answer||"No response returned.";return;
+  }catch(e){r.textContent=(hi?"लाइव AI अभी सेटअप नहीं है: ":"Live AI setup is not active yet: ")+e.message;return}
+ }
+ r.textContent=(hi?"आपका ":"Your ")+selected[0]+(hi?" वर्कस्पेस तैयार है। आपने लिखा: ":" workspace is ready. Your brief: ")+v+(hi?"। यह अभी इंटरैक्टिव डेमो है; इस टूल का असली AI इंजन अभी कनेक्ट नहीं है।":" This is an interactive demo; this tool's live AI engine is not connected yet.");
+}
 function toggleLang(){hi=!hi;document.getElementById("langBtn").textContent=hi?"English":"हिन्दी";document.getElementById("eyebrow").textContent=hi?"आपका क्रिएटिव AI वर्कस्पेस":"YOUR CREATIVE AI WORKSPACE";document.getElementById("heroTitle").textContent=hi?"एक प्लेटफॉर्म। 30 AI टूल।":"One Platform. 30 AI Tools.";document.getElementById("heroText").textContent=hi?"क्रिएटिविटी, पढ़ाई और बिज़नेस के टूल एक जगह। सभी के लिए मुफ्त एक्सेस।":"Explore creative, productivity and business tools in one place. Free access for everyone, with no mandatory payment.";document.getElementById("exploreBtn").textContent=hi?"सभी टूल देखें ↓":"Explore all tools ↓";document.getElementById("aboutBtn").textContent=hi?"कैसे काम करता है":"How it works";document.getElementById("toolsTitle").textContent=hi?"AI टूल देखें":"Explore AI Tools";document.getElementById("aboutTitle").textContent=hi?"सभी के लिए मुफ्त":"Free for everyone";document.getElementById("aboutText").textContent=hi?"AI FUTURE अभी एक सार्वजनिक डेमो है। टूल कार्ड, सर्च, कैटेगरी और नमूना वर्कस्पेस काम करते हैं। असली AI परिणामों के लिए सुरक्षित सर्वर और AI सेवाओं को जोड़ना होगा; उनका खर्च हो सकता है। API Key इस सार्वजनिक HTML में न डालें।":"AI FUTURE is a public-facing prototype. Tool cards, search, categories and sample workspaces are interactive. Real AI generation is not connected yet; it requires secure server-side integrations and may have usage costs. Never put private API keys in this public HTML file.";renderFilters();renderTools()}
 function showInfo(){document.getElementById("about").scrollIntoView({behavior:"smooth"})}
 renderFilters();renderTools();
