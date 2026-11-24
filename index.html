@@ -8,7 +8,7 @@
 <style>
 :root{--bg:#100d20;--panel:#1b1730;--panel2:#241e3d;--purple:#9b6cff;--pink:#d66bff;--text:#f7f3ff;--muted:#b9b0d0;--line:#393052;--green:#69dfb0}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -20%,#39245f 0,#100d20 55%);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;min-height:100vh}
-button,input,textarea{font:inherit}button{cursor:pointer}
+button,input,textarea{font:inherit}button{cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation} .tool{width:100%;display:block;user-select:none;-webkit-user-select:none}
 header{position:sticky;top:0;z-index:5;background:#100d20ed;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 .nav{max-width:1150px;margin:auto;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
 .brand{font-size:22px;font-weight:900;letter-spacing:.5px}.brand span{color:#b68cff}.tag{font-size:11px;color:var(--green);border:1px solid #387c68;border-radius:30px;padding:5px 9px;margin-left:7px}
@@ -57,7 +57,7 @@ footer{text-align:center;padding:25px;color:#8e86a8;font-size:12px;border-top:1p
 <section class="info" id="about"><h2 id="aboutTitle">Free for everyone</h2><p id="aboutText">AI FUTURE is a public-facing prototype. Tool cards, search, categories and sample workspaces are interactive. Real AI generation is not connected yet; it requires secure server-side integrations and may have usage costs. Never put private API keys in this public HTML file.</p></section>
 </main>
 <footer>© 2026 AI FUTURE · Made for everyone · Free public access</footer>
-<div class="overlay" id="overlay" onclick="if(event.target===this)closeModal()"><div class="modal"><div class="modalhead"><div><div class="eyebrow" style="font-size:10px;letter-spacing:1px">YOUR PERSONAL AI ASSISTANT</div><h2 id="modalTitle">Tool workspace</h2></div><button class="btn close" onclick="closeModal()">×</button></div>
+<div class="overlay" id="overlay" onclick="if(event.target===this)closeModal()"><div class="modal" onclick="event.stopPropagation()"><div class="modalhead"><div><div class="eyebrow" style="font-size:10px;letter-spacing:1px">YOUR PERSONAL AI ASSISTANT</div><h2 id="modalTitle">Tool workspace</h2></div><button class="btn close" onclick="closeModal()">×</button></div>
 <div class="assistantBubble"><div class="assistantAvatar" id="assistantAvatar">✦</div><div><b id="assistantName">AI Assistant</b><p id="assistantWelcome">Welcome! Tell me what you want to create.</p></div></div>
 <div id="toolFields"></div>
 <div class="quickTitle" id="quickTitle">Try an example</div><div class="quickChips" id="quickChips"></div>
@@ -75,7 +75,24 @@ const categories=["All","Image","Video","Audio","Writing","Business"];
 let active="All",selected=null,hi=false;
 const hiNames={"Image":"इमेज","Video":"वीडियो","Audio":"ऑडियो","Writing":"लेखन","Business":"बिज़नेस","All":"सभी"};
 function renderFilters(){document.getElementById("filters").innerHTML=categories.map(c=>`<button class="filter ${active===c?'active':''}" onclick="active='${c}';renderFilters();renderTools()">${hi?(hiNames[c]||c):c}</button>`).join("")}
-function renderTools(){let q=document.getElementById("search").value.toLowerCase();let found=tools.filter(t=>(active==="All"||t[1]===active)&&(t[0]+" "+t[1]+" "+t[3]).toLowerCase().includes(q));document.getElementById("toolGrid").innerHTML=found.map((t)=>`<button class="tool" onclick="openTool(${tools.indexOf(t)})"><div class="tooltop"><span class="emoji">${t[2]}</span><span class="pill">${hi?(hiNames[t[1]]||t[1]):t[1]}</span></div><h3>${t[0]}</h3><p>${t[3]}</p><span class="launch">${hi?"खोलें →":"Open tool →"}</span></button>`).join("")||`<p style="color:#b9b0d0">No tools found. Try another search.</p>`;document.getElementById("count").textContent=hi?`कुल ${found.length} टूल दिखाए जा रहे हैं`:`Showing ${found.length} of 30 tools`}
+function renderTools(){let q=document.getElementById("search").value.toLowerCase();let found=tools.filter(t=>(active==="All"||t[1]===active)&&(t[0]+" "+t[1]+" "+t[3]).toLowerCase().includes(q));document.getElementById("toolGrid").innerHTML=found.map((t)=>`<button type="button" class="tool" data-tool-index="${tools.indexOf(t)}"><div class="tooltop"><span class="emoji">${t[2]}</span><span class="pill">${hi?(hiNames[t[1]]||t[1]):t[1]}</span></div><h3>${t[0]}</h3><p>${t[3]}</p><span class="launch">${hi?"खोलें →":"Open tool →"}</span></button>`).join("")||`<p style="color:#b9b0d0">No tools found. Try another search.</p>`;document.getElementById("count").textContent=hi?`कुल ${found.length} टूल दिखाए जा रहे हैं`:`Showing ${found.length} of 30 tools`}
+// Mobile-friendly delegated card activation: works even after cards are re-rendered.
+document.getElementById("toolGrid").addEventListener("click", function(event){
+  const card = event.target.closest("[data-tool-index]");
+  if (!card) return;
+  event.preventDefault();
+  const index = Number(card.getAttribute("data-tool-index"));
+  if (Number.isInteger(index) && tools[index]) openTool(index);
+});
+document.getElementById("toolGrid").addEventListener("keydown", function(event){
+  const card = event.target.closest("[data-tool-index]");
+  if (!card) return;
+  if (event.key === "Enter" || event.key === " ") {
+    event.preventDefault();
+    const index = Number(card.getAttribute("data-tool-index"));
+    if (Number.isInteger(index) && tools[index]) openTool(index);
+  }
+});
 const assistantProfiles={
 "AI Image Generator":["Image Artist","मैं आपकी कल्पना को एक शानदार इमेज प्रॉम्प्ट में बदलने में मदद करूँगा।","तस्वीर में क्या दिखना चाहिए? विषय, जगह, रंग और स्टाइल बताइए।","जैसे: बारिश में चमकता भविष्य का शहर","सिनेमैटिक पोर्ट्रेट|3D कार्टून|प्रकृति का दृश्य"],
 "AI Photo Editor":["Photo Studio","बताइए फोटो में क्या बदलाव चाहिए। मूल फोटो की पहचान और जरूरी चीजें सुरक्षित रखने की बात भी लिखें।","फोटो में कौन-से बदलाव करने हैं?","जैसे: रोशनी सुधारें और बैकग्राउंड साफ रखें","लाइटिंग सुधारें|रंग बेहतर करें|पुरानी फोटो साफ करें"],
